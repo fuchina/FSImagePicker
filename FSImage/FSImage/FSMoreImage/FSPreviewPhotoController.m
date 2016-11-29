@@ -27,6 +27,8 @@
 @property (nonatomic,strong) UIView         *naviBar;
 @property (nonatomic,strong) UIView         *bottomView;
 @property (nonatomic,assign) BOOL           isFullScreen;
+@property (nonatomic,weak ) FSImagePickerController             *imageNavigationController;
+
 
 @property (nonatomic,strong) UICollectionView   *collectionView;
 
@@ -64,16 +66,12 @@
 {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.imageNavigationController = (FSImagePickerController *)self.navigationController;
+    
     [self seeImageDesignViews];
     [self designBBIs];
     [self designBottomView];
     [self refreshUI];
-}
-
-- (FSImagePicker *)picker
-{
-    FSImagePickerController *ip = (FSImagePickerController *)self.navigationController;
-    return ip.picker;
 }
 
 - (void)designBBIs
@@ -95,7 +93,7 @@
     _beyondButton.btnClickBlock = ^ (FSBeyondButton *bButton){
         [this handleSelectedModelsWithFlag:bButton];
     };
-    FSImagePicker *picker = [self picker];
+    FSImagePicker *picker = self.imageNavigationController.picker;
     FSIPModel *selectedModel = [_models objectAtIndex:_index];
     if ([picker.selectedImages containsObject:selectedModel]) {
         _beyondButton.isSelected = YES;
@@ -111,7 +109,7 @@
     colorView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.1];
     [_bottomView addSubview:colorView];
     
-    FSImagePicker *picker = [self picker];
+    FSImagePicker *picker = self.imageNavigationController.picker;
     __weak FSPreviewPhotoController *this = self;
     _buttonLabel = [[FSButtonLabel alloc] initWithFrame:CGRectMake(10, 0, 150, 50)];
     _buttonLabel.label.text = @"原图";
@@ -189,7 +187,7 @@
         cell.image = model.image;
     }else{
         __weak FSIPImageCell *weakCell = cell;
-        [[self picker] clearnessImageForModel:model completion:^(UIImage *bImage) {
+        [self.imageNavigationController.picker clearnessImageForModel:model completion:^(UIImage *bImage) {
             weakCell.image = bImage;
         }];
     }
@@ -248,7 +246,7 @@
 
 - (void)refreshUI
 {
-    FSImagePicker *picker = [self picker];
+    FSImagePicker *picker = self.imageNavigationController.picker;
     _countButton.enabled = picker.selectedImages.count?YES:NO;
     _countButton.countLabel.text = @(picker.selectedImages.count).stringValue;
 }
@@ -260,7 +258,7 @@
 
 - (void)indexChangeAction:(NSInteger)bIndex
 {
-    FSImagePicker *picker = [self picker];
+    FSImagePicker *picker = self.imageNavigationController.picker;
     NSArray<NSIndexPath *> *indexPaths = [self.collectionView indexPathsForVisibleItems];
     if (indexPaths) {
         if (self.models.count > bIndex) {

@@ -20,11 +20,12 @@
 
 @interface FSAllImageController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
-@property (nonatomic,strong) UICollectionView   *collectionView;
-@property (nonatomic,strong) UIView             *bottomView;
-@property (nonatomic,strong) FSButtonLabel      *buttonLabel;
-@property (nonatomic,strong) FSCountButton      *countButton;
-@property (nonatomic,strong) UIButton           *button;
+@property (nonatomic,strong) UICollectionView                   *collectionView;
+@property (nonatomic,strong) UIView                             *bottomView;
+@property (nonatomic,strong) FSButtonLabel                      *buttonLabel;
+@property (nonatomic,strong) FSCountButton                      *countButton;
+@property (nonatomic,strong) UIButton                           *button;
+@property (nonatomic,weak ) FSImagePickerController             *imageNavigationController;
 
 @end
 
@@ -42,6 +43,7 @@ static NSString *cellID = @"FSMoreImageCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.imageNavigationController = (FSImagePickerController *)self.navigationController;
     
     self.view.backgroundColor = [UIColor whiteColor];
     if (!self.title) {
@@ -62,8 +64,7 @@ static NSString *cellID = @"FSMoreImageCell";
 - (void)moreImageHandleDatas
 {
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        FSImagePickerController *ip = (FSImagePickerController *)self.navigationController;
-        FSImagePicker *instance = ip.picker;
+        FSImagePicker *instance = self.imageNavigationController.picker;
         if (!self.dataSource) {
             if (!instance.allModels.count) {
                 [instance requestAllResources];
@@ -104,8 +105,7 @@ static NSString *cellID = @"FSMoreImageCell";
     lineView.backgroundColor = [UIColor lightGrayColor];
     [_bottomView addSubview:lineView];
     
-    FSImagePickerController *ip = (FSImagePickerController *)self.navigationController;
-    FSImagePicker *manager = ip.picker;
+    FSImagePicker *manager = self.imageNavigationController.picker;
     NSArray *selectedImages = manager.selectedImages;
     BOOL hasSelectedImages = selectedImages.count?YES:NO;
     
@@ -119,22 +119,19 @@ static NSString *cellID = @"FSMoreImageCell";
     [_bottomView addSubview:_button];
     
     __weak FSAllImageController *this = self;
-    BOOL needOriginalImage = YES;
-    if (needOriginalImage) {
-        _buttonLabel = [[FSButtonLabel alloc] initWithFrame:CGRectMake(60, 5, 150, 40)];
-        _buttonLabel.isOriginal = manager.isOriginal;
-        if (_buttonLabel.isOriginal && hasSelectedImages) {
-            CGFloat bSize = [manager sizeOfSelectedImages];
-            NSString *sizeString = [[NSString alloc] initWithFormat:@"原图 (%@)",[FSIPTool KMGUnit:bSize]];
-            _buttonLabel.label.text = sizeString;
-        }else{
-            _buttonLabel.label.text = @"原图";
-        }
-        _buttonLabel.tapBlock = ^ (FSButtonLabel *bButton){
-            [this changeIsOriginal:bButton.isOriginal];
-        };
-        [_bottomView addSubview:_buttonLabel];
+    _buttonLabel = [[FSButtonLabel alloc] initWithFrame:CGRectMake(60, 5, 150, 40)];
+    _buttonLabel.isOriginal = manager.isOriginal;
+    if (_buttonLabel.isOriginal && hasSelectedImages) {
+        CGFloat bSize = [manager sizeOfSelectedImages];
+        NSString *sizeString = [[NSString alloc] initWithFormat:@"原图 (%@)",[FSIPTool KMGUnit:bSize]];
+        _buttonLabel.label.text = sizeString;
+    }else{
+        _buttonLabel.label.text = @"原图";
     }
+    _buttonLabel.tapBlock = ^ (FSButtonLabel *bButton){
+        [this changeIsOriginal:bButton.isOriginal];
+    };
+    [_bottomView addSubview:_buttonLabel];
     
     _countButton = [[FSCountButton alloc] initWithFrame:CGRectMake(_bottomView.bounds.size.width - 75, 4, 70, 40)];
     _countButton.textLabel.text = @"确定";
@@ -150,21 +147,16 @@ static NSString *cellID = @"FSMoreImageCell";
 
 - (void)queryAction
 {
-    FSImagePickerController *ip = (FSImagePickerController *)self.navigationController;
-    FSImagePicker *manager = ip.picker;
-    FSImagePickerController *picker = (FSImagePickerController *)self.navigationController;
-    if (picker.hasSelectImages) {// NSArray<UIImage *> *photos, NSArray *assets,
-        picker.hasSelectImages([manager selectedImagesWithModels],[manager selectedAssetsWithModels]);
-        [picker dismissViewControllerAnimated:YES completion:^{
-
-        }];
+    FSImagePicker *manager = self.imageNavigationController.picker;
+    if (self.imageNavigationController.hasSelectImages) {// NSArray<UIImage *> *photos, NSArray *assets,
+        self.imageNavigationController.hasSelectImages([manager selectedImagesWithModels],[manager selectedAssetsWithModels]);
+        [self.imageNavigationController dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
 - (void)changeIsOriginal:(BOOL)isOriginal
 {
-    FSImagePickerController *ip = (FSImagePickerController *)self.navigationController;
-    FSImagePicker *picker = ip.picker;
+    FSImagePicker *picker = self.imageNavigationController.picker;
     if (!picker.selectedImages.count) {
         _buttonLabel.isOriginal = NO;
         _buttonLabel.label.text = @"原图";
@@ -184,26 +176,21 @@ static NSString *cellID = @"FSMoreImageCell";
 
 - (void)btnClick
 {
-    FSImagePickerController *ip = (FSImagePickerController *)self.navigationController;
-    NSArray *selectedImages = ip.picker.selectedImages;
+    NSArray *selectedImages = self.imageNavigationController.picker.selectedImages;
     [self pushToBigPictureControllerWithImageArray:selectedImages index:0];
 }
 
 - (void)handleSelectedDatas:(FSBeyondButton *)bButton data:(FSIPModel *)bModel index:(NSInteger)bIndex
 {
-    FSImagePickerController *ip = (FSImagePickerController *)self.navigationController;
-    FSImagePicker *picker = ip.picker;
+    FSImagePicker *picker = self.imageNavigationController.picker;
     if (bButton.isSelected) {
         NSArray *selectedImages = picker.selectedImages;
-        FSImagePickerController *imagePicker = (FSImagePickerController *)self.navigationController;
-        
         BOOL isContain = [selectedImages containsObject:bModel];
-        if ((selectedImages.count >= imagePicker.imageCount) && (!isContain)) {
-            UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"提示" message:[[NSString alloc] initWithFormat:@"最多上传%@张",@(imagePicker.imageCount)] preferredStyle:UIAlertControllerStyleAlert];
+        if ((selectedImages.count >= self.imageNavigationController.imageCount) && (!isContain)) {
+            UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"提示" message:[[NSString alloc] initWithFormat:@"最多上传%@张",@(self.imageNavigationController.imageCount)] preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *doneAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
             [controller addAction:doneAction];
             [self presentViewController:controller animated:YES completion:nil];
-            
             bButton.isSelected = NO;
             return;
         }
@@ -252,11 +239,9 @@ static NSString *cellID = @"FSMoreImageCell";
 
 - (FSMoreImageCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    FSImagePickerController *ip = (FSImagePickerController *)self.navigationController;
-
     FSMoreImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
     cell.model = self.dataSource[indexPath.row];
-    cell.isSelected = [ip.picker.selectedImages containsObject:cell.model];
+    cell.isSelected = [self.imageNavigationController.picker.selectedImages containsObject:cell.model];
     __weak FSAllImageController *this = self;
     cell.btnClickBlock = ^ (FSBeyondButton *bButton,FSIPModel *bModel){
         [this handleSelectedDatas:bButton data:bModel index: -1];
@@ -266,8 +251,7 @@ static NSString *cellID = @"FSMoreImageCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    FSImagePickerController *ip = (FSImagePickerController *)self.navigationController;
-    [self pushToBigPictureControllerWithImageArray:ip.picker.allModels index:indexPath.row];
+    [self pushToBigPictureControllerWithImageArray:self.imageNavigationController.picker.allModels index:indexPath.row];
 }
 
 - (void)pushToBigPictureControllerWithImageArray:(NSArray *)array index:(NSInteger)index
@@ -296,9 +280,7 @@ static NSString *cellID = @"FSMoreImageCell";
 
 - (void)bbiRightAction
 {
-    [self.navigationController dismissViewControllerAnimated:YES completion:^{
-
-    }];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

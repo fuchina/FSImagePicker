@@ -64,6 +64,8 @@
 #endif
                             tmpModel.image = result;
                             tmpModel.info = info;
+                        }else{
+                            this.imageView.image = result;
                         }
                     });
                 }];
