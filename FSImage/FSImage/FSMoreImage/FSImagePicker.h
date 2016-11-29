@@ -19,6 +19,9 @@
 // 是否为原图
 @property (nonatomic,assign) BOOL isOriginal;
 
+// 请求资源
+- (void)requestAllResources;
+
 // 获取所选择的图片的大小
 - (NSInteger)sizeOfSelectedImages;
 
@@ -28,8 +31,8 @@
 // 稍微清晰的图片，但不是原图
 - (void)clearnessImageForModel:(FSIPModel *)model completion:(void(^)(UIImage *bImage))completion;
 
-// 请求资源
-- (void)requestAllResources;
+// 图片大小
+- (NSInteger)sizeForImageWithAsset:(PHAsset *)asset;
 
 - (NSArray *)selectedAssetsWithModels;
 

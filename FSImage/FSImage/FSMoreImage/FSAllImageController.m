@@ -29,21 +29,27 @@
 
 @end
 
-static NSString *cellID = @"FSMoreImageCell";
-
 @implementation FSAllImageController
 
 #if DEBUG
 - (void)dealloc
 {
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
     NSLog(@"%s",__FUNCTION__);
 }
 #endif
+
+//- (void)notificationAction
+//{
+//    [self queryAction];
+//}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.imageNavigationController = (FSImagePickerController *)self.navigationController;
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationAction) name:@"FSPreviewPhotoController" object:nil];;
     
     self.view.backgroundColor = [UIColor whiteColor];
     if (!self.title) {
@@ -150,7 +156,7 @@ static NSString *cellID = @"FSMoreImageCell";
     FSImagePicker *manager = self.imageNavigationController.picker;
     if (self.imageNavigationController.hasSelectImages) {// NSArray<UIImage *> *photos, NSArray *assets,
         self.imageNavigationController.hasSelectImages([manager selectedImagesWithModels],[manager selectedAssetsWithModels]);
-        [self.imageNavigationController dismissViewControllerAnimated:YES completion:nil];
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
@@ -164,7 +170,6 @@ static NSString *cellID = @"FSMoreImageCell";
         return;
     }
     picker.isOriginal = isOriginal;
-    
     if (picker.isOriginal) {
         CGFloat bSize = [picker sizeOfSelectedImages];
         NSString *sizeString = [[NSString alloc] initWithFormat:@"原图 (%@)",[FSIPTool KMGUnit:bSize]];
@@ -239,6 +244,7 @@ static NSString *cellID = @"FSMoreImageCell";
 
 - (FSMoreImageCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    static NSString *cellID = @"FSMoreImageCell";
     FSMoreImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
     cell.model = self.dataSource[indexPath.row];
     cell.isSelected = [self.imageNavigationController.picker.selectedImages containsObject:cell.model];
@@ -268,7 +274,8 @@ static NSString *cellID = @"FSMoreImageCell";
     bigController.hasSelected = ^ (FSBeyondButton *bButton,FSIPModel *bModel,NSInteger bIndex){
         [this handleSelectedDatas:bButton data:bModel index:bIndex];
     };
-    bigController.queryBlock = ^(){
+    bigController.queryActionBlock = ^(FSPreviewPhotoController *bVC){
+        [bVC.navigationController popViewControllerAnimated:NO];
         [this queryAction];
     };
 }

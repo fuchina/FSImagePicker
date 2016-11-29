@@ -112,9 +112,17 @@
     FSImagePicker *picker = self.imageNavigationController.picker;
     __weak FSPreviewPhotoController *this = self;
     _buttonLabel = [[FSButtonLabel alloc] initWithFrame:CGRectMake(10, 0, 150, 50)];
-    _buttonLabel.label.text = @"原图";
     [_bottomView addSubview:_buttonLabel];
     
+    if (picker.isOriginal && (self.models.count > _index)) {
+        FSIPModel *model = self.models[_index];
+        if (model.length) {
+            _buttonLabel.label.text = [[NSString alloc] initWithFormat:@"原图 (%@)",[FSIPTool KMGUnit:model.length]];
+        }
+    }else{
+        _buttonLabel.label.text = @"原图";
+    }
+
     _buttonLabel.isOriginal = picker.isOriginal;
     _buttonLabel.label.textColor = [UIColor lightGrayColor];
     _buttonLabel.tapBlock = ^ (FSButtonLabel *bButton){
@@ -140,8 +148,9 @@
     _countButton.textLabel.text = @"确定";
     [_bottomView addSubview:_countButton];
     _countButton.tapBlock = ^ (FSCountButton *bButton){
-        if (this.queryBlock) {
-            this.queryBlock();
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"FSPreviewPhotoController" object:nil];
+        if (this.queryActionBlock) {
+            this.queryActionBlock(this);
         }
     };
 }

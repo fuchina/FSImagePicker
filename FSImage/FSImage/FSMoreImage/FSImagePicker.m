@@ -105,14 +105,15 @@
     PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
     options.synchronous = YES;
     __block NSInteger length = 0;
+    __weak FSImagePicker *this = self;
     [[PHImageManager defaultManager] requestImageDataForAsset:asset options:options resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
         length = imageData.length;
-//        for (int x = 0; x < self.selectedImages.count; x ++) {
-//            FSIPModel *model = self.selectedImages[x];
-//            if (model.asset == asset) {
-//                model.length = length;
-//            }
-//        }
+        for (int x = 0; x < this.selectedImages.count; x ++) {
+            FSIPModel *model = this.selectedImages[x];
+            if (model.asset == asset) {
+                model.length = length;
+            }
+        }
     }];
     return length;
 }
