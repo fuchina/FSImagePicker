@@ -1,0 +1,340 @@
+//
+//  MSImagePickerController.m
+//  Demo
+//
+//  Created by DamonDing on 15/5/14.
+//  Copyright (c) 2015年 zxm. All rights reserved.
+//
+
+#import "MSImagePickerController.h"
+#import <objc/runtime.h>
+
+static char attachSelfKey;
+static const NSInteger defaultSelectedImgsNum = 20;
+
+@interface MSImagePickerController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
+@property (readonly) Class PUGridVC;
+@property (readonly) Class PUCollectionView;
+@property (readonly) Class PUPhotoView;
+
+@property (retain, nonatomic) UIBarButtonItem* doneButton;
+@property (retain, nonatomic) UIBarButtonItem* lastDoneButton;
+
+@property (retain, nonatomic) id lastDelegate;
+
+@property (retain, nonatomic) NSIndexPath* curIndexPath;
+@property (retain, nonatomic) NSMutableArray* indexPaths;
+
+@property (assign, nonatomic) BOOL haveExchangeMethod;
+
+@end
+
+@implementation MSImagePickerController
+
+- (instancetype)init
+{
+    if (self = [super init]) {
+        _maxSelectedImgsNum = defaultSelectedImgsNum;
+    }
+    return self;
+}
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.delegate = self;
+}
+
+- (Class) PUPhotoView {
+    return NSClassFromString(@"PUPhotoView");
+}
+
+- (Class) PUCollectionView {
+    return NSClassFromString(@"PUCollectionView");
+}
+
+- (Class) PUGridVC {
+    return NSClassFromString(@"PUUIMomentsGridViewController");
+}
+
+- (NSMutableArray*) indexPaths {
+    if (_indexPaths == nil) {
+        _indexPaths = [NSMutableArray new];
+    }
+    
+    return _indexPaths;
+}
+
+- (NSMutableArray*) images {
+    if (_images == nil) {
+        _images = [NSMutableArray new];
+    }
+    
+    return _images;
+}
+
+- (UIBarButtonItem*)doneButton
+{
+    if (_doneButton == nil) {
+        _doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)];
+    }
+    return _doneButton;
+}
+
+- (void)setMaxSelectedImgsNum:(NSInteger)maxSelectedImgsNum
+{
+    if (maxSelectedImgsNum > 0) {
+        _maxSelectedImgsNum = maxSelectedImgsNum;
+    }
+    else
+        _maxSelectedImgsNum = defaultSelectedImgsNum;
+}
+
+- (void) done:(id)sender
+{
+    if ([self.msDelegate respondsToSelector:@selector(imagePickerControllerCustom:didFinishPickingImage:)]) {
+        [self.msDelegate imagePickerControllerCustom:self didFinishPickingImage:self.images];
+    }
+}
+
+-(UIView*)getPUCollectionView:(UIView*)v
+{
+    for (UIView* i in v.subviews) {
+        if ([i isKindOfClass:self.PUCollectionView]) {
+            return i;
+        }
+    }
+    return nil;
+}
+
+/**
+ *  get indicator button in PUPhotoView
+ *
+ *  @param v must be PUPhotoView
+ *
+ *  @return the indicator button
+ */
+- (UIButton*)getIndicatorButton:(UIView*)v
+{
+    for (id b in v.subviews) {
+        if ([b isKindOfClass:[UIButton class]]) {
+            return (UIButton*)b;
+        }
+    }
+    
+    return nil;
+}
+
+/**
+ *  add selected state
+ *
+ *  @param v must be PUPhotoView
+ */
+- (void)addIndicatorButton:(UIView*)v
+{
+    UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.layer.cornerRadius = 15;
+    
+    [button setImage:[UIImage imageNamed:@"AssetsPickerChecked"] forState:UIControlStateNormal];
+    [v addSubview:button];
+    
+    [button setTranslatesAutoresizingMaskIntoConstraints:false];
+    NSArray* cs1 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[button(30)]-1-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(button)];
+    NSArray* cs2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[button(30)]-1-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(button)];
+    
+    [v addConstraints:cs1];
+    [v addConstraints:cs2];
+    [button setSelected:true];
+    button.hidden = false;
+    [v updateConstraintsIfNeeded];
+}
+
+/**
+ *  remove selectd state
+ *
+ *  @param v must be PUPhotoView
+ */
+- (void) removeIndicatorButton:(UIView*)v {
+    for (UIView* b in v.subviews) {
+        if ([b isKindOfClass:[UIButton class]]) {
+            [b removeFromSuperview];
+            return;
+        }
+    }
+}
+
+- (void) addNewImage:(UIImage*) image {
+    [self.images addObject:image];
+}
+
+
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    self.curIndexPath = nil;
+    [self.images removeAllObjects];
+    [self.indexPaths removeAllObjects];
+    
+    UIView* collection = [self getPUCollectionView:viewController.view];
+    
+    if (collection == nil) {
+        if (self.haveExchangeMethod) {
+            // reset method
+            Method m2 = class_getInstanceMethod([self.lastDelegate class], @selector(override_collectionView:cellForItemAtIndexPath:));
+            Method m3 = class_getInstanceMethod([self.lastDelegate class], @selector(collectionView:cellForItemAtIndexPath:));
+            method_exchangeImplementations(m2, m3);
+            
+            self.haveExchangeMethod = NO;
+        }
+        return;
+    }
+    
+    /**
+     *  the collection base class is UICollectionView, so delegate, datasource ...
+     */
+    self.lastDelegate = [collection valueForKey:@"delegate"];
+    [collection setValue:self forKey:@"delegate"];
+    
+    Method m1 = class_getInstanceMethod([self class], @selector(override_collectionView:cellForItemAtIndexPath:));
+    
+    class_addMethod([self.lastDelegate class], @selector(override_collectionView:cellForItemAtIndexPath:), method_getImplementation(m1), method_getTypeEncoding(m1));
+    
+    Method m2 = class_getInstanceMethod([self.lastDelegate class], @selector(override_collectionView:cellForItemAtIndexPath:));
+    Method m3 = class_getInstanceMethod([self.lastDelegate class], @selector(collectionView:cellForItemAtIndexPath:));
+    
+    method_exchangeImplementations(m2, m3);
+    self.haveExchangeMethod = YES;
+    
+    objc_setAssociatedObject(self.lastDelegate, &attachSelfKey, self, OBJC_ASSOCIATION_ASSIGN); // 把self关联成self.lastDelegate的属性
+    
+    self.lastDoneButton = viewController.navigationItem.rightBarButtonItem;
+}
+
+
+/**
+ *
+ *
+ *  @return -1 not in
+ */
+- (int) isCurIndexInIndexPaths {
+    for (int i = 0; i < self.indexPaths.count; i++) {
+        if (((NSIndexPath*)self.indexPaths[i]).row == self.curIndexPath.row &&
+            ((NSIndexPath*)self.indexPaths[i]).section == self.curIndexPath.section) {
+            return i;
+        }
+    }
+    
+    return -1;
+}
+
+/**
+ *  careful self is PUUIMomentsGridViewController,PUUIPhotosAlbumViewController... now
+ *
+ *  @param collectionView
+ *  @param indexPath
+ *
+ *  @return
+ */
+- (UICollectionViewCell *)override_collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath; {
+    MSImagePickerController* picker = (MSImagePickerController*)objc_getAssociatedObject(self, &attachSelfKey); // 这里的self不是指MSImagePickerController
+    
+    UICollectionViewCell* cell = [self performSelector:@selector(override_collectionView:cellForItemAtIndexPath:) withObject:collectionView withObject:indexPath];
+    
+    if (picker != nil) {
+        picker.curIndexPath = indexPath;
+        if ([picker isCurIndexInIndexPaths] != -1) {
+            UIButton* indicatorButton = [picker getIndicatorButton:cell];
+            
+            if (indicatorButton == nil) {
+                // do select(add button)
+                [picker addIndicatorButton:cell];
+            }
+        } else {
+            [picker removeIndicatorButton:cell];
+        }
+    }
+    
+    return cell;
+}
+
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath;
+{
+    self.curIndexPath = indexPath;
+    
+    UIView* cell = [collectionView cellForItemAtIndexPath:indexPath];
+    
+    UIButton* indicatorButton = [self getIndicatorButton:cell];
+    
+    if (indicatorButton == nil ) {
+        // do select(add button)  如果maxSelectedImgsNum ==1 替换所选图片
+        if (_maxSelectedImgsNum == 1 && _maxSelectedImgsNum == _images.count) {
+            NSIndexPath * firstIndexPath = (NSIndexPath*)self.indexPaths[0];
+            UIView* firstCell = [collectionView cellForItemAtIndexPath:firstIndexPath];
+            [self removeIndicatorButton:firstCell];
+            [self addIndicatorButton:cell];
+        }
+        if (_maxSelectedImgsNum > _images.count) {
+            [self addIndicatorButton:cell];
+        }
+    } else {
+        // do deselect (remove button)
+        [self removeIndicatorButton:cell];
+        
+    }
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    SEL sel = NSSelectorFromString([NSString stringWithFormat:@"%s", sel_getName(_cmd)]);
+    if ([self.lastDelegate respondsToSelector:sel]) {
+        [self.lastDelegate performSelector:sel withObject:collectionView withObject:indexPath];
+    }
+#pragma clang diagnostic pop
+    
+    return YES;
+}
+
+- (void)dealloc
+{
+    if (self.haveExchangeMethod) {
+        Method m2 = class_getInstanceMethod([self.lastDelegate class], @selector(override_collectionView:cellForItemAtIndexPath:));
+        Method m3 = class_getInstanceMethod([self.lastDelegate class], @selector(collectionView:cellForItemAtIndexPath:));
+        method_exchangeImplementations(m2, m3);
+    }
+}
+
+// The picker does not dismiss itself; the client dismisses it in these callbacks.
+// The delegate will receive one or the other, but not both, depending whether the user
+// confirms or cancels.
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo; {
+    
+    int idx = [self isCurIndexInIndexPaths];
+    if (idx == -1) {
+        // select  如果maxSelectedImgsNum ==1 替换所选图片
+        if (_maxSelectedImgsNum == 1 && _maxSelectedImgsNum == _images.count) {
+            [_indexPaths removeObjectAtIndex:0];
+            [_images removeObjectAtIndex:0];
+            [self.indexPaths addObject:self.curIndexPath];
+            [self.images addObject:image];
+        }
+        if (_maxSelectedImgsNum > _images.count) {
+            [self.indexPaths addObject:self.curIndexPath];
+            [self.images addObject:image];
+        }
+    } else if (idx != -1){
+        // deselect
+        [self.indexPaths removeObjectAtIndex:idx];
+        [self.images removeObjectAtIndex:idx];
+    }
+    
+    if (self.images.count == 1) {
+        picker.topViewController.navigationItem.rightBarButtonItem = self.doneButton;
+    } else if (self.images.count == 0) {
+        picker.topViewController.navigationItem.rightBarButtonItem = self.lastDoneButton;
+    }
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker; {
+    if ([self.msDelegate respondsToSelector:@selector(imagePickerControllerDidCancelCustom:)]) {
+        [self.msDelegate imagePickerControllerDidCancelCustom:self];
+    }
+}
+@end
