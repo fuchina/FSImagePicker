@@ -32,6 +32,13 @@ static NSString *cellID = @"FSMoreImageCell";
 
 @implementation FSAllImageController
 
+#if DEBUG
+- (void)dealloc
+{
+    NSLog(@"%s",__FUNCTION__);
+}
+#endif
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     

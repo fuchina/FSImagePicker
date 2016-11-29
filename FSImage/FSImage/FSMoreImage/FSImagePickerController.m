@@ -17,10 +17,12 @@
 
 @implementation FSImagePickerController
 
+#if DEBUG
 - (void)dealloc
 {
-    NSLog(@"dealloc");
+    NSLog(@"%s",__FUNCTION__);
 }
+#endif
 
 - (instancetype)initWithLimitCount:(NSInteger)maxCount
 {

@@ -13,10 +13,12 @@
 
 @implementation FSImagePicker
 
+#if DEBUG
 - (void)dealloc
 {
     NSLog(@"%s",__FUNCTION__);
 }
+#endif
 
 - (instancetype)init
 {

@@ -22,6 +22,13 @@
 
 @implementation FSMoreZoneImageController
 
+#if DEBUG
+- (void)dealloc
+{
+    NSLog(@"%s",__FUNCTION__);
+}
+#endif
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];

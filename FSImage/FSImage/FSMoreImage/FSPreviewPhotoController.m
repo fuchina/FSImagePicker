@@ -34,6 +34,13 @@
 
 @implementation FSPreviewPhotoController
 
+#if DEBUG
+- (void)dealloc
+{
+    NSLog(@"%s",__FUNCTION__);
+}
+#endif
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
@@ -79,7 +86,7 @@
     FSBackButton *backButton = [[FSBackButton alloc] initWithFrame:CGRectMake(10, 20, 90, 44)];
     backButton.backgroundColor = [UIColor clearColor];
     backButton.tapBlock = ^ (FSBackButton *bButton){
-        this.collectionView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
+        this.collectionView.frame = CGRectMake(0, 0, this.view.bounds.size.width, this.view.bounds.size.height);
         [this.navigationController popViewControllerAnimated:YES];
     };
     [_naviBar addSubview:backButton];
