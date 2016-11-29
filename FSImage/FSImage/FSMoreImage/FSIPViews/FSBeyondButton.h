@@ -13,4 +13,6 @@
 @property (nonatomic,assign) BOOL       isSelected;
 @property (nonatomic, copy)  void (^btnClickBlock)(FSBeyondButton *bButton);
 
+- (instancetype)initWithFrame:(CGRect)frame center:(BOOL)center;
+
 @end

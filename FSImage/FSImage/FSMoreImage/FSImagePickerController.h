@@ -19,6 +19,6 @@
 // 选中的图片数组回调
 @property (nonatomic,copy) void (^hasSelectImages)(NSArray<UIImage *> *photos,NSArray<PHAsset *> *assets);
 
-- (instancetype)initWithLimitCount:(NSInteger)maxCount;
++ (void)presentViewControllerFrom:(UIViewController *)baseController maxCount:(NSInteger)maxCount block:(void(^)(NSArray<UIImage *> *photos,NSArray<PHAsset *> *assets))block;
 
 @end

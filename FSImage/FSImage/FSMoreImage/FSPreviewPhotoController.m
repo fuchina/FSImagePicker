@@ -21,12 +21,12 @@
 
 @interface FSPreviewPhotoController ()<UICollectionViewDelegate,UICollectionViewDataSource,UIScrollViewDelegate>
 
-@property (nonatomic,strong) FSBeyondButton *beyondButton;
-@property (nonatomic,strong) FSCountButton  *countButton;
-@property (nonatomic,strong) FSButtonLabel  *buttonLabel;
-@property (nonatomic,strong) UIView         *naviBar;
-@property (nonatomic,strong) UIView         *bottomView;
-@property (nonatomic,assign) BOOL           isFullScreen;
+@property (nonatomic,strong) FSBeyondButton                     *beyondButton;
+@property (nonatomic,strong) FSCountButton                      *countButton;
+@property (nonatomic,strong) FSButtonLabel                      *buttonLabel;
+@property (nonatomic,strong) UIView                             *naviBar;
+@property (nonatomic,strong) UIView                             *bottomView;
+@property (nonatomic,assign) BOOL                               isFullScreen;
 @property (nonatomic,weak ) FSImagePickerController             *imageNavigationController;
 
 
@@ -89,7 +89,7 @@
     };
     [_naviBar addSubview:backButton];
     
-    _beyondButton = [[FSBeyondButton alloc] initWithFrame:CGRectMake(_naviBar.width - 54, 20, 44, 44)];
+    _beyondButton = [[FSBeyondButton alloc] initWithFrame:CGRectMake(_naviBar.width - 54, 20, 44, 44) center:YES];
     _beyondButton.btnClickBlock = ^ (FSBeyondButton *bButton){
         [this handleSelectedModelsWithFlag:bButton];
     };

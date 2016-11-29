@@ -24,13 +24,40 @@
 }
 #endif
 
++ (void)presentViewControllerFrom:(UIViewController *)baseController maxCount:(NSInteger)maxCount block:(void(^)(NSArray<UIImage *> *photos,NSArray<PHAsset *> *assets))block
+{
+    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (status == PHAuthorizationStatusRestricted || status == PHAuthorizationStatusDenied)
+            {
+                UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"没有相册权限" message:@"请去相册中允许访问相册" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *doneAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    NSURL *url = [NSURL URLWithString:@"prefs:root=Privacy&path=PHOTOS"];
+                    if ([[UIApplication sharedApplication] canOpenURL:url]) {
+                        [[UIApplication sharedApplication] openURL:url];
+                    }
+                }];
+                [controller addAction:doneAction];
+                [baseController presentViewController:controller animated:YES completion:nil];
+            }else if (status == PHAuthorizationStatusAuthorized){
+                FSImagePickerController *moreImageController = [[FSImagePickerController alloc] initWithLimitCount:maxCount];
+                [baseController presentViewController:moreImageController animated:YES completion:nil];
+                moreImageController.hasSelectImages = ^(NSArray<UIImage *> *photos,NSArray<PHAsset *> *assets){
+                    if (block) {
+                        block(photos,assets);
+                    }
+                };
+            }
+        });
+    }];
+}
+
 - (instancetype)initWithLimitCount:(NSInteger)maxCount
 {
-    _picker = [[FSImagePicker alloc] init];
-    
-    _imageCount = maxCount;
     FSMoreZoneImageController *zoneController = [[FSMoreZoneImageController alloc] init];
     self = [super initWithRootViewController:zoneController];
+    _picker = [[FSImagePicker alloc] init];
+    _imageCount = maxCount;
     if (self) {
         FSAllImageController *imagePicker = [[FSAllImageController alloc] init];
         [self pushViewController:imagePicker animated:YES];
@@ -42,35 +69,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
-
-//- (BOOL)canVisitAlbum
-//{
-//    if (IOS(9)) {
-//        if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusNotDetermined) {
-//            [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
-//                
-//                if (status == PHAuthorizationStatusAuthorized) {
-//                    
-//                    // TODO:...
-//                }
-//            }];
-//        }
-//    }else{
-//        if ([ALAssetsLibrary authorizationStatus] == ALAuthorizationStatusNotDetermined) {
-//            ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc] init];
-//            [assetsLibrary enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
-//                if (*stop) {
-//                    // TODO:...
-//                    return;
-//                }
-//                *stop = TRUE;//不能省略
-//            } failureBlock:^(NSError *error) {
-//                NSLog(@"failureBlock");
-//            }];
-//        }
-//    }
-//    return NO;
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

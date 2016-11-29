@@ -28,7 +28,7 @@
         _imageView.clipsToBounds = YES;
         [self.contentView addSubview:_imageView];
         
-        _button = [[FSBeyondButton alloc] initWithFrame:CGRectMake(self.bounds.size.width - 44, 0, 44, 44)];
+        _button = [[FSBeyondButton alloc] initWithFrame:CGRectMake(self.bounds.size.width - 44, 0, 44, 44) center:NO];
         __weak FSMoreImageCell *this = self;
         _button.btnClickBlock = ^ (FSBeyondButton *bButton){
             if (this.btnClickBlock) {

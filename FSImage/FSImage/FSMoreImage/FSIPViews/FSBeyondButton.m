@@ -13,19 +13,28 @@
 @interface FSBeyondButton ()
 
 @property (nonatomic,strong) UILabel    *label;
+@property (nonatomic,strong) UIView     *colorView;
+@property (nonatomic,assign) BOOL       needCenter;
 
 @end
 
 @implementation FSBeyondButton
 
-- (instancetype)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame center:(BOOL)center
 {
     self = [super initWithFrame:frame];
     if (self) {
+        _needCenter = center;
+        
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapActionBeyond)];
         [self addGestureRecognizer:tap];
         
-        _label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 24, 24)];
+        _colorView = [[UIView alloc] initWithFrame:CGRectMake(15 - center * 5, 5 + center * 5, 24, 24)];// (10,10,24,24)   NO:(15,5,24,24)
+        _colorView.layer.cornerRadius = _colorView.height / 2;
+        _colorView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.3];
+        [self addSubview:_colorView];
+        
+        _label = [[UILabel alloc] initWithFrame:_colorView.frame];
         _label.layer.masksToBounds = YES;
         _label.layer.cornerRadius = _label.height / 2;
         _label.textColor = [UIColor whiteColor];
@@ -35,10 +44,6 @@
         _label.layer.borderWidth = 1;
         [self addSubview:_label];
         
-        UIView *colorView = [[UIView alloc] initWithFrame:_label.bounds];
-        colorView.layer.cornerRadius = colorView.height / 2;
-        colorView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.1];
-        [_label addSubview:colorView];
     }
     return self;
 }
@@ -63,10 +68,10 @@
         [UIView animateWithDuration:.6 delay:0.1 usingSpringWithDamping:.3 initialSpringVelocity:.3 options:UIViewAnimationOptionCurveEaseOut animations:^{
             this.label.width = 30;
             this.label.height = 30;
-            this.label.center = CGPointMake(this.width / 2, this.height / 2);
+            this.label.center = CGPointMake(this.width / 2 + (!this.needCenter) * 5, this.height / 2 - (!this.needCenter) * 5);
             this.label.layer.cornerRadius = this.label.width / 2;
         } completion:^(BOOL finished) {
-            this.label.frame = CGRectMake(10, 10, 24, 24);
+            this.label.frame = CGRectMake(15 - this.needCenter * 5, 5 + this.needCenter * 5, 24, 24);
             this.label.layer.cornerRadius = this.label.height / 2;
             this.label.layer.borderColor = [UIColor whiteColor].CGColor;
         }];

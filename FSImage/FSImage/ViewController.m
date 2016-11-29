@@ -42,14 +42,13 @@
 //        
 //    }];
 //    return;
-    FSImagePickerController *moreImageController = [[FSImagePickerController alloc] initWithLimitCount:100];
-    [self presentViewController:moreImageController animated:YES completion:nil];
-    moreImageController.hasSelectImages = ^(NSArray<UIImage *> *photos,NSArray<PHAsset *> *assets){
+    
+    [FSImagePickerController presentViewControllerFrom:self maxCount:100 block:^(NSArray<UIImage *> *photos, NSArray<PHAsset *> *assets) {
         for (int x = 0; x < photos.count; x ++) {
             UIImage *image = photos[x];
             NSLog(@"%@",image);
         }
-    };
+    }];
 }
 
 + (void)pushToViewControllerWithClass:(NSString *)className navigationController:(UINavigationController *)navigationController param:(NSDictionary *)param configBlock:(void (^)(UIViewController *vc))configBlockParam
