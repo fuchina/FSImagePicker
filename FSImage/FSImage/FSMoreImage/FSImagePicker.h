@@ -29,9 +29,6 @@
 - (FSIPModel *)clearnessImageForModel:(FSIPModel *)model;
 - (void)clearnessImageForModel:(FSIPModel *)model completion:(void(^)(FSIPModel *bModel))completion;
 
-// 获取模糊的小图
-- (FSIPModel *)thumbnailImageForModel:(FSIPModel *)model;
-
 // 请求资源
 - (void)requestAllResources;
 

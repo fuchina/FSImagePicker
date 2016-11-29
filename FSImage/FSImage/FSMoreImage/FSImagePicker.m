@@ -118,25 +118,6 @@
     }];
 }
 
-// 获取模糊的小图
-- (FSIPModel *)thumbnailImageForModel:(FSIPModel *)model
-{
-    PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
-    // 同步获得图片, 只会返回1张图片
-    options.synchronous = YES;
-    options.resizeMode = PHImageRequestOptionsResizeModeFast;
-    
-    // 从asset中获得图片
-    __block FSIPModel *value = model;
-    __weak FSImagePicker *this = self;
-    [[PHImageManager defaultManager] requestImageForAsset:model.asset targetSize:CGSizeZero contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-        value.image = result;
-        value.info = info;
-        value.isMoreClear = NO;
-        value.length = [this sizeForImageWithAsset:model.asset];
-    }];
-    return value;
-}
 
 - (NSInteger)sizeForImageWithAsset:(PHAsset *)asset
 {
@@ -204,7 +185,7 @@
     return data;
 }
 
-// 获取所有图片的缩略图
+// 获取所有图片的Model
 - (NSDictionary *)getThumbnailImages
 {
     // 获得所有的自定义相簿
@@ -279,7 +260,6 @@
         model.image = nil;
         model.info = nil;
         model.asset = asset;
-        model.isMoreClear = original;
         [array addObject:model];
     }
     return array;
