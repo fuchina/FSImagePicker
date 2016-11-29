@@ -36,6 +36,5 @@
 
 - (NSArray *)selectedImagesWithModels;
 
-- (NSInteger)compressWidthForImageWidth:(NSInteger)imageWidth;
 
 @end

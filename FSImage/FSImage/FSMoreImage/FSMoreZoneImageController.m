@@ -29,7 +29,8 @@
 }
 #endif
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"照片";
@@ -85,9 +86,7 @@
 
 - (void)bbiRightAction
 {
-    [self.navigationController dismissViewControllerAnimated:YES completion:^{
-
-    }];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -78,7 +78,7 @@
     CGSize size = CGSizeMake(sizeWidth, sizeHeight);
     
     // 从asset中获得图片
-    __block FSIPModel *value = model;
+    __block __weak FSIPModel *value = model;
     __weak FSImagePicker *this = self;
     [[PHImageManager defaultManager] requestImageForAsset:model.asset targetSize:size contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
         value.image = result;
@@ -105,15 +105,19 @@
     CGSize size = CGSizeMake(sizeWidth, sizeHeight);
     
     // 从asset中获得图片
-    __block FSIPModel *value = model;
+    __block __weak FSIPModel *value = model;
     __weak FSImagePicker *this = self;
     [[PHImageManager defaultManager] requestImageForAsset:model.asset targetSize:size contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-        value.image = result;
-        value.info = info;
-        value.isMoreClear = YES;
-        value.length = [this sizeForImageWithAsset:model.asset];
-        if (completion) {
-            completion(value);
+        BOOL downloadFinined = ![[info objectForKey:PHImageCancelledKey] boolValue] && ![info objectForKey:PHImageErrorKey] && ![[info objectForKey:PHImageResultIsDegradedKey] boolValue];
+        if (downloadFinined) {
+            value.image = result;
+            NSLog(@"%@",result);
+            value.info = info;
+            value.isMoreClear = YES;
+            value.length = [this sizeForImageWithAsset:model.asset];
+            if (completion) {
+                completion(value);
+            }
         }
     }];
 }
@@ -178,7 +182,7 @@
     }
     PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
     options.synchronous = YES;
-    __block NSData *data = nil;
+    __block __weak NSData *data = nil;
     [[PHImageManager defaultManager] requestImageDataForAsset:model.asset options:options resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
         data = imageData;
     }];

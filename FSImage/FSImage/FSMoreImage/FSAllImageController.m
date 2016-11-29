@@ -39,7 +39,8 @@ static NSString *cellID = @"FSMoreImageCell";
 }
 #endif
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
