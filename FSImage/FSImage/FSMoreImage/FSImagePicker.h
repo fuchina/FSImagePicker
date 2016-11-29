@@ -11,9 +11,9 @@
 
 @interface FSImagePicker : NSObject
 
-@property (nonatomic,strong) NSArray<FSIPModel *>    *selectedImages;
+@property (nonatomic,strong) NSArray<FSIPModel*>     *selectedImages;
 
-@property (nonatomic,strong) NSDictionary                   *allThumbnails;
+@property (nonatomic,strong) NSDictionary            *allThumbnails;
 @property (nonatomic,strong) NSArray<FSIPModel*>     *allModels;
 
 // 是否为原图
@@ -26,8 +26,7 @@
 - (NSDictionary *)getThumbnailImages;
 
 // 稍微清晰的图片，但不是原图
-- (FSIPModel *)clearnessImageForModel:(FSIPModel *)model;
-- (void)clearnessImageForModel:(FSIPModel *)model completion:(void(^)(FSIPModel *bModel))completion;
+- (void)clearnessImageForModel:(FSIPModel *)model completion:(void(^)(UIImage *bImage))completion;
 
 // 请求资源
 - (void)requestAllResources;

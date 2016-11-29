@@ -61,36 +61,7 @@
 }
 
 // 稍微清晰的图片，但不是原图
-- (FSIPModel *)clearnessImageForModel:(FSIPModel *)model
-{
-    PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
-    // 同步获得图片, 只会返回1张图片
-    options.synchronous = YES;
-    options.resizeMode = PHImageRequestOptionsResizeModeFast;
-    
-    CGFloat sizeWidth = model.asset.pixelWidth;
-    CGFloat sizeHeight = model.asset.pixelHeight;
-    
-    if (model.asset.pixelWidth > [UIScreen mainScreen].bounds.size.width * 2) {
-        sizeWidth = [UIScreen mainScreen].bounds.size.width * 2;
-        sizeHeight = sizeWidth * model.asset.pixelHeight / model.asset.pixelWidth;
-    }
-    CGSize size = CGSizeMake(sizeWidth, sizeHeight);
-    
-    // 从asset中获得图片
-    __block __weak FSIPModel *value = model;
-    __weak FSImagePicker *this = self;
-    [[PHImageManager defaultManager] requestImageForAsset:model.asset targetSize:size contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-        value.image = result;
-        value.info = info;
-        value.isMoreClear = YES;
-        value.length = [this sizeForImageWithAsset:model.asset];
-    }];
-    return value;
-}
-
-// 稍微清晰的图片，但不是原图
-- (void)clearnessImageForModel:(FSIPModel *)model completion:(void(^)(FSIPModel *bModel))completion
+- (void)clearnessImageForModel:(FSIPModel *)model completion:(void(^)(UIImage *bImage))completion
 {
     PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
     options.resizeMode = PHImageRequestOptionsResizeModeFast;
@@ -111,12 +82,18 @@
         BOOL downloadFinined = ![[info objectForKey:PHImageCancelledKey] boolValue] && ![info objectForKey:PHImageErrorKey] && ![[info objectForKey:PHImageResultIsDegradedKey] boolValue];
         if (downloadFinined) {
             value.image = result;
+#if DEBUG
             NSLog(@"%@",result);
+#endif
             value.info = info;
             value.isMoreClear = YES;
             value.length = [this sizeForImageWithAsset:model.asset];
             if (completion) {
-                completion(value);
+                completion(result);
+            }
+        }else{
+            if (completion) {
+                completion(result);
             }
         }
     }];
@@ -130,12 +107,12 @@
     __block NSInteger length = 0;
     [[PHImageManager defaultManager] requestImageDataForAsset:asset options:options resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
         length = imageData.length;
-        for (int x = 0; x < self.selectedImages.count; x ++) {
-            FSIPModel *model = self.selectedImages[x];
-            if (model.asset == asset) {
-                model.length = length;
-            }
-        }
+//        for (int x = 0; x < self.selectedImages.count; x ++) {
+//            FSIPModel *model = self.selectedImages[x];
+//            if (model.asset == asset) {
+//                model.length = length;
+//            }
+//        }
     }];
     return length;
 }

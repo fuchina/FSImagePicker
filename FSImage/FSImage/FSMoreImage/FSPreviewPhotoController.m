@@ -183,14 +183,14 @@
 - (FSIPImageCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellID = @"FSIPImageCell";
-    FSIPImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
+    FSIPImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];    
     FSIPModel *model = self.models[indexPath.row];
     if (model.isMoreClear) {
         cell.image = model.image;
     }else{
         __weak FSIPImageCell *weakCell = cell;
-        [[self picker] clearnessImageForModel:model completion:^(FSIPModel *bModel) {
-            weakCell.image = bModel.image;
+        [[self picker] clearnessImageForModel:model completion:^(UIImage *bImage) {
+            weakCell.image = bImage;
         }];
     }
     
@@ -260,25 +260,12 @@
 
 - (void)indexChangeAction:(NSInteger)bIndex
 {
+    FSImagePicker *picker = [self picker];
     NSArray<NSIndexPath *> *indexPaths = [self.collectionView indexPathsForVisibleItems];
     if (indexPaths) {
         if (self.models.count > bIndex) {
             FSIPModel *model = [self.models objectAtIndex:bIndex];
-            FSImagePicker *picker = [self picker];
             self.beyondButton.isSelected = [picker.selectedImages containsObject:model];
-            
-            if (!model.isMoreClear) {
-                model = [[self picker] clearnessImageForModel:model];
-                
-                if ([self picker].allModels.count > bIndex) {
-                    FSIPModel *oldModel = [[self picker].allModels objectAtIndex:bIndex];
-                    oldModel.image = model.image;
-                    oldModel.isMoreClear = model.isMoreClear;
-                    oldModel.length = model.length;
-                }
-                
-                [self.collectionView reloadItemsAtIndexPaths:indexPaths];
-            }
             
             if (self.buttonLabel.isOriginal) {
                 NSString *sizeString = [[NSString alloc] initWithFormat:@"原图 (%@)",[FSIPTool KMGUnit:model.length]];

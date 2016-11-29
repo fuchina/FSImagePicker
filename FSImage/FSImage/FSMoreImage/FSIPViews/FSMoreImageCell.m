@@ -56,9 +56,15 @@
                 __block FSIPModel *tmpModel = model;
                 [[PHImageManager defaultManager] requestImageForAsset:model.asset targetSize:CGSizeMake(pWidth, pWidth * model.asset.pixelHeight / model.asset.pixelWidth) contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        this.imageView.image = result;
-                        tmpModel.image = result;
-                        tmpModel.info = info;
+                        BOOL downloadFinined = ![[info objectForKey:PHImageCancelledKey] boolValue] && ![info objectForKey:PHImageErrorKey] && ![[info objectForKey:PHImageResultIsDegradedKey] boolValue];
+                        if (downloadFinined) {
+                            this.imageView.image = result;
+#if DEBUG
+                            NSLog(@"%@",result);
+#endif
+                            tmpModel.image = result;
+                            tmpModel.info = info;
+                        }
                     });
                 }];
             });
