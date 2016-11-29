@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FSMoreImageModel.h"
+#import "FSIPModel.h"
 
 @class FSButtonLabel;
 @class FSBeyondButton;
@@ -17,7 +17,7 @@
 @property (nonatomic,assign) NSInteger      index;
 
 @property (nonatomic,copy)  void (^tapBlock)(BOOL bIsOriginal);
-@property (nonatomic,copy)  void (^hasSelected)(FSBeyondButton *bButton,FSMoreImageModel *bModel,NSInteger bIndex);
+@property (nonatomic,copy)  void (^hasSelected)(FSBeyondButton *bButton,FSIPModel *bModel,NSInteger bIndex);
 @property (nonatomic,copy)  void (^queryBlock)();
 
 @end

@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FSMoreImageModel.h"
+#import "FSIPModel.h"
 #import "FSBeyondButton.h"
 
 @interface FSMoreImageCell : UICollectionViewCell
 
-@property (nonatomic, strong) FSMoreImageModel  *model;
-@property (nonatomic, copy)  void (^btnClickBlock)(FSBeyondButton *bButton,FSMoreImageModel *bModel);
+@property (nonatomic, strong) FSIPModel  *model;
+@property (nonatomic, copy)  void (^btnClickBlock)(FSBeyondButton *bButton,FSIPModel *bModel);
 @property (nonatomic, assign) BOOL              isSelected;
 
 @end

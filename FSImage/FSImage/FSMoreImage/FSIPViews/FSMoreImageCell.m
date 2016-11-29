@@ -40,7 +40,7 @@
     return self;
 }
 
-- (void)setModel:(FSMoreImageModel *)model
+- (void)setModel:(FSIPModel *)model
 {
     if (_model != model) {
         _model = model;
@@ -54,7 +54,7 @@
             NSInteger pWidth = (NSInteger)(width * 2);
             
             __weak FSMoreImageCell *this = self;
-            __block FSMoreImageModel *tmpModel = model;
+            __block FSIPModel *tmpModel = model;
             
             [[PHImageManager defaultManager] requestImageForAsset:model.asset targetSize:CGSizeMake(pWidth, pWidth * model.asset.pixelHeight / model.asset.pixelWidth) contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
                 this.imageView.image = result;

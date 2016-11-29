@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FSMoreImageModel.h"
+#import "FSIPModel.h"
 
 @interface FSMoreZoneImageCell : UITableViewCell
 
-@property (nonatomic,strong) FSMoreImageModel   *model;
+@property (nonatomic,strong) FSIPModel   *model;
 
 @end

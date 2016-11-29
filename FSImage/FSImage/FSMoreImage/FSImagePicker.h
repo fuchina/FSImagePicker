@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FSMoreImageModel.h"
+#import "FSIPModel.h"
 
 @interface FSImagePicker : NSObject
 
-@property (nonatomic,strong) NSArray<FSMoreImageModel *>    *selectedImages;
+@property (nonatomic,strong) NSArray<FSIPModel *>    *selectedImages;
 
 @property (nonatomic,strong) NSDictionary                   *allThumbnails;
-@property (nonatomic,strong) NSArray<FSMoreImageModel*>     *allModels;
+@property (nonatomic,strong) NSArray<FSIPModel*>     *allModels;
 
 // 是否为原图
 @property (nonatomic,assign) BOOL isOriginal;
@@ -26,11 +26,11 @@
 - (NSDictionary *)getThumbnailImages;
 
 // 稍微清晰的图片，但不是原图
-- (FSMoreImageModel *)clearnessImageForModel:(FSMoreImageModel *)model;
-- (void)clearnessImageForModel:(FSMoreImageModel *)model completion:(void(^)(FSMoreImageModel *bModel))completion;
+- (FSIPModel *)clearnessImageForModel:(FSIPModel *)model;
+- (void)clearnessImageForModel:(FSIPModel *)model completion:(void(^)(FSIPModel *bModel))completion;
 
 // 获取模糊的小图
-- (FSMoreImageModel *)thumbnailImageForModel:(FSMoreImageModel *)model;
+- (FSIPModel *)thumbnailImageForModel:(FSIPModel *)model;
 
 // 请求资源
 - (void)requestAllResources;

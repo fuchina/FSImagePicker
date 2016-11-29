@@ -48,7 +48,7 @@
 {
     __block CGFloat imageLength = 0;
     for (int x = 0; x < _selectedImages.count; x ++) {
-        FSMoreImageModel *model = [_selectedImages objectAtIndex:x];
+        FSIPModel *model = [_selectedImages objectAtIndex:x];
         if (model.length) {
             imageLength += model.length;
         }else{
@@ -59,7 +59,7 @@
 }
 
 // 稍微清晰的图片，但不是原图
-- (FSMoreImageModel *)clearnessImageForModel:(FSMoreImageModel *)model
+- (FSIPModel *)clearnessImageForModel:(FSIPModel *)model
 {
     PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
     // 同步获得图片, 只会返回1张图片
@@ -76,7 +76,7 @@
     CGSize size = CGSizeMake(sizeWidth, sizeHeight);
     
     // 从asset中获得图片
-    __block FSMoreImageModel *value = model;
+    __block FSIPModel *value = model;
     __weak FSImagePicker *this = self;
     [[PHImageManager defaultManager] requestImageForAsset:model.asset targetSize:size contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
         value.image = result;
@@ -88,7 +88,7 @@
 }
 
 // 稍微清晰的图片，但不是原图
-- (void)clearnessImageForModel:(FSMoreImageModel *)model completion:(void(^)(FSMoreImageModel *bModel))completion
+- (void)clearnessImageForModel:(FSIPModel *)model completion:(void(^)(FSIPModel *bModel))completion
 {
     PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
     options.resizeMode = PHImageRequestOptionsResizeModeFast;
@@ -103,7 +103,7 @@
     CGSize size = CGSizeMake(sizeWidth, sizeHeight);
     
     // 从asset中获得图片
-    __block FSMoreImageModel *value = model;
+    __block FSIPModel *value = model;
     __weak FSImagePicker *this = self;
     [[PHImageManager defaultManager] requestImageForAsset:model.asset targetSize:size contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
         value.image = result;
@@ -117,7 +117,7 @@
 }
 
 // 获取模糊的小图
-- (FSMoreImageModel *)thumbnailImageForModel:(FSMoreImageModel *)model
+- (FSIPModel *)thumbnailImageForModel:(FSIPModel *)model
 {
     PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
     // 同步获得图片, 只会返回1张图片
@@ -125,7 +125,7 @@
     options.resizeMode = PHImageRequestOptionsResizeModeFast;
     
     // 从asset中获得图片
-    __block FSMoreImageModel *value = model;
+    __block FSIPModel *value = model;
     __weak FSImagePicker *this = self;
     [[PHImageManager defaultManager] requestImageForAsset:model.asset targetSize:CGSizeZero contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
         value.image = result;
@@ -144,7 +144,7 @@
     [[PHImageManager defaultManager] requestImageDataForAsset:asset options:options resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
         length = imageData.length;
         for (int x = 0; x < self.selectedImages.count; x ++) {
-            FSMoreImageModel *model = self.selectedImages[x];
+            FSIPModel *model = self.selectedImages[x];
             if (model.asset == asset) {
                 model.length = length;
             }
@@ -157,7 +157,7 @@
 {
     NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:_selectedImages.count];
     for (int x = 0; x < _selectedImages.count; x ++) {
-        FSMoreImageModel *model = [_selectedImages objectAtIndex:x];
+        FSIPModel *model = [_selectedImages objectAtIndex:x];
         if (model.asset) {
             [array addObject:model.asset];
         }
@@ -169,7 +169,7 @@
 {
     NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:_selectedImages.count];
     for (int x = 0; x < _selectedImages.count; x ++) {
-        FSMoreImageModel *model = [_selectedImages objectAtIndex:x];
+        FSIPModel *model = [_selectedImages objectAtIndex:x];
         if (model.asset) {
             NSData *imageData = [self imageForModel:model];
             if (!_isOriginal) {
@@ -188,7 +188,7 @@
     return array;
 }
 
-- (NSData *)imageForModel:(FSMoreImageModel *)model
+- (NSData *)imageForModel:(FSIPModel *)model
 {
     if (!model.asset) {
         return nil;
@@ -273,7 +273,7 @@
             continue;
         }
         
-        FSMoreImageModel *model = [[FSMoreImageModel alloc] init];
+        FSIPModel *model = [[FSIPModel alloc] init];
         model.image = nil;
         model.info = nil;
         model.asset = asset;

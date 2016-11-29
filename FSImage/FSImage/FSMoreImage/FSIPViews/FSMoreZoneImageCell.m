@@ -10,7 +10,7 @@
 
 @implementation FSMoreZoneImageCell
 
-- (void)setModel:(FSMoreImageModel *)model
+- (void)setModel:(FSIPModel *)model
 {
     if (_model != model) {
         self.imageView.image = model.image;

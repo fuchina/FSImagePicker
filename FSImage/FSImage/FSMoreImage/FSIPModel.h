@@ -1,8 +1,8 @@
 //
-//  FSMoreImageModel.h
+//  FSIPModel.h
 //  FSImage
 //
-//  Created by fudon on 2016/10/10.
+//  Created by fudon on 2016/11/29.
 //  Copyright © 2016年 guazi. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import <Photos/Photos.h>
 
-@interface FSMoreImageModel : NSObject
+@interface FSIPModel : NSObject
 
 @property (nonatomic,strong) PHAsset        *asset;
 @property (nonatomic,strong) UIImage        *image;

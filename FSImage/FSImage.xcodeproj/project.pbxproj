@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		5C62139E1DDF0A7800DAE504 /* FSPPSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C62139D1DDF0A7800DAE504 /* FSPPSelectView.m */; };
 		5C6213A11DDF0AFB00DAE504 /* FSRunTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6213A01DDF0AFB00DAE504 /* FSRunTime.m */; };
-		5C96BD3F1DAB3C9C00942EE0 /* FSMoreImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C96BD3E1DAB3C9C00942EE0 /* FSMoreImageModel.m */; };
+		5C67C4781DED2DA600E5906B /* FSIPModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C67C4771DED2DA600E5906B /* FSIPModel.m */; };
 		5C96BD501DAB7C9900942EE0 /* UIView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C96BD4F1DAB7C9900942EE0 /* UIView+Addition.m */; };
 		5CA725E71DACD8A200A001E8 /* FSMoreZoneImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA725E61DACD8A200A001E8 /* FSMoreZoneImageController.m */; };
 		5CBC834E1DEC14A1001B0A8F /* FSIPImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CBC834D1DEC14A1001B0A8F /* FSIPImageCell.m */; };
@@ -40,8 +40,8 @@
 		5C62139D1DDF0A7800DAE504 /* FSPPSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPPSelectView.m; sourceTree = "<group>"; };
 		5C62139F1DDF0AFB00DAE504 /* FSRunTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRunTime.h; sourceTree = "<group>"; };
 		5C6213A01DDF0AFB00DAE504 /* FSRunTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRunTime.m; sourceTree = "<group>"; };
-		5C96BD3D1DAB3C9C00942EE0 /* FSMoreImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMoreImageModel.h; sourceTree = "<group>"; };
-		5C96BD3E1DAB3C9C00942EE0 /* FSMoreImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMoreImageModel.m; sourceTree = "<group>"; };
+		5C67C4761DED2DA600E5906B /* FSIPModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSIPModel.h; sourceTree = "<group>"; };
+		5C67C4771DED2DA600E5906B /* FSIPModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSIPModel.m; sourceTree = "<group>"; };
 		5C96BD4E1DAB7C9900942EE0 /* UIView+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Addition.h"; sourceTree = "<group>"; };
 		5C96BD4F1DAB7C9900942EE0 /* UIView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Addition.m"; sourceTree = "<group>"; };
 		5CA725DE1DAC926F00A001E8 /* FSMoreImageHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMoreImageHeader.h; sourceTree = "<group>"; };
@@ -194,8 +194,6 @@
 				5C96BD4F1DAB7C9900942EE0 /* UIView+Addition.m */,
 				5CDBB4591DB0CFFF001C1C26 /* FSImagePicker.h */,
 				5CDBB45A1DB0CFFF001C1C26 /* FSImagePicker.m */,
-				5C96BD3D1DAB3C9C00942EE0 /* FSMoreImageModel.h */,
-				5C96BD3E1DAB3C9C00942EE0 /* FSMoreImageModel.m */,
 				5CA725E51DACD8A200A001E8 /* FSMoreZoneImageController.h */,
 				5CA725E61DACD8A200A001E8 /* FSMoreZoneImageController.m */,
 				5CDBB4401DB0C8D8001C1C26 /* FSImagePickerController.h */,
@@ -206,6 +204,8 @@
 				5CBC83501DEC3E2A001B0A8F /* FSPreviewPhotoController.m */,
 				71A66E731DEC759B002C28B9 /* FSIPTool.h */,
 				71A66E741DEC759B002C28B9 /* FSIPTool.m */,
+				5C67C4761DED2DA600E5906B /* FSIPModel.h */,
+				5C67C4771DED2DA600E5906B /* FSIPModel.m */,
 				5CDBB4461DB0CB99001C1C26 /* FSIPViews */,
 			);
 			path = FSMoreImage;
@@ -291,13 +291,13 @@
 				5CA725E71DACD8A200A001E8 /* FSMoreZoneImageController.m in Sources */,
 				5CDBB4511DB0CB99001C1C26 /* FSBackButton.m in Sources */,
 				5CEC7FB61DDEA92D00628AC7 /* MSImagePickerController.m in Sources */,
+				5C67C4781DED2DA600E5906B /* FSIPModel.m in Sources */,
 				5CEC7FB01DDEA14E00628AC7 /* FSPhotoPickerController.m in Sources */,
 				5CDBB4451DB0C956001C1C26 /* FSAllImageController.m in Sources */,
 				5C6213A11DDF0AFB00DAE504 /* FSRunTime.m in Sources */,
 				5CDBB4541DB0CB99001C1C26 /* FSMoreImageCell.m in Sources */,
 				5C96BD501DAB7C9900942EE0 /* UIView+Addition.m in Sources */,
 				5CDBB45B1DB0CFFF001C1C26 /* FSImagePicker.m in Sources */,
-				5C96BD3F1DAB3C9C00942EE0 /* FSMoreImageModel.m in Sources */,
 				5CBC83511DEC3E2A001B0A8F /* FSPreviewPhotoController.m in Sources */,
 				5CD70DE71DC8831F0003F791 /* FSCountButton.m in Sources */,
 				5CDBB4551DB0CB99001C1C26 /* FSMoreZoneImageCell.m in Sources */,

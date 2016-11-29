@@ -181,7 +181,7 @@ static NSString *cellID = @"FSMoreImageCell";
     [self pushToBigPictureControllerWithImageArray:selectedImages index:0];
 }
 
-- (void)handleSelectedDatas:(FSBeyondButton *)bButton data:(FSMoreImageModel *)bModel index:(NSInteger)bIndex
+- (void)handleSelectedDatas:(FSBeyondButton *)bButton data:(FSIPModel *)bModel index:(NSInteger)bIndex
 {
     FSImagePickerController *ip = (FSImagePickerController *)self.navigationController;
     FSImagePicker *picker = ip.picker;
@@ -250,7 +250,7 @@ static NSString *cellID = @"FSMoreImageCell";
     cell.model = self.dataSource[indexPath.row];
     cell.isSelected = [ip.picker.selectedImages containsObject:cell.model];
     __weak FSAllImageController *this = self;
-    cell.btnClickBlock = ^ (FSBeyondButton *bButton,FSMoreImageModel *bModel){
+    cell.btnClickBlock = ^ (FSBeyondButton *bButton,FSIPModel *bModel){
         [this handleSelectedDatas:bButton data:bModel index: -1];
     };
     return cell;
@@ -273,7 +273,7 @@ static NSString *cellID = @"FSMoreImageCell";
         this.buttonLabel.isOriginal = bIsOriginal;
         [this changeIsOriginal:bIsOriginal];
     };
-    bigController.hasSelected = ^ (FSBeyondButton *bButton,FSMoreImageModel *bModel,NSInteger bIndex){
+    bigController.hasSelected = ^ (FSBeyondButton *bButton,FSIPModel *bModel,NSInteger bIndex){
         [this handleSelectedDatas:bButton data:bModel index:bIndex];
     };
     bigController.queryBlock = ^(){

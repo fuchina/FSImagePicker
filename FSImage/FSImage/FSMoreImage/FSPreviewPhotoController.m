@@ -89,7 +89,7 @@
         [this handleSelectedModelsWithFlag:bButton];
     };
     FSImagePicker *picker = [self picker];
-    FSMoreImageModel *selectedModel = [_models objectAtIndex:_index];
+    FSIPModel *selectedModel = [_models objectAtIndex:_index];
     if ([picker.selectedImages containsObject:selectedModel]) {
         _beyondButton.isSelected = YES;
     }
@@ -119,7 +119,7 @@
         bButton.label.textColor = [UIColor lightGrayColor];
         
         if (bButton.isOriginal) {
-            FSMoreImageModel *nowModel = [this.models objectAtIndex:this.index];
+            FSIPModel *nowModel = [this.models objectAtIndex:this.index];
             if (nowModel.length) {
                 NSString *sizeString = [[NSString alloc] initWithFormat:@"原图 (%@)",[FSIPTool KMGUnit:nowModel.length]];
                 bButton.label.text = sizeString;
@@ -177,12 +177,12 @@
 {
     static NSString *cellID = @"FSIPImageCell";
     FSIPImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
-    FSMoreImageModel *model = self.models[indexPath.row];
+    FSIPModel *model = self.models[indexPath.row];
     if (model.isMoreClear) {
         cell.image = model.image;
     }else{
         __weak FSIPImageCell *weakCell = cell;
-        [[self picker] clearnessImageForModel:model completion:^(FSMoreImageModel *bModel) {
+        [[self picker] clearnessImageForModel:model completion:^(FSIPModel *bModel) {
             weakCell.image = bModel.image;
         }];
     }
@@ -232,7 +232,7 @@
 {
     if (self.hasSelected) {
         if (self.models.count > self.index) {
-            FSMoreImageModel *nowModel = [self.models objectAtIndex:self.index];
+            FSIPModel *nowModel = [self.models objectAtIndex:self.index];
             self.hasSelected(bButton,nowModel,self.index);
         }
         [self refreshUI];
@@ -256,7 +256,7 @@
     NSArray<NSIndexPath *> *indexPaths = [self.collectionView indexPathsForVisibleItems];
     if (indexPaths) {
         if (self.models.count > bIndex) {
-            FSMoreImageModel *model = [self.models objectAtIndex:bIndex];
+            FSIPModel *model = [self.models objectAtIndex:bIndex];
             FSImagePicker *picker = [self picker];
             self.beyondButton.isSelected = [picker.selectedImages containsObject:model];
             
@@ -264,7 +264,7 @@
                 model = [[self picker] clearnessImageForModel:model];
                 
                 if ([self picker].allModels.count > bIndex) {
-                    FSMoreImageModel *oldModel = [[self picker].allModels objectAtIndex:bIndex];
+                    FSIPModel *oldModel = [[self picker].allModels objectAtIndex:bIndex];
                     oldModel.image = model.image;
                     oldModel.isMoreClear = model.isMoreClear;
                     oldModel.length = model.length;

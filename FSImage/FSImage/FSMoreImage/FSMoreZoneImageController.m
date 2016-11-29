@@ -8,7 +8,7 @@
 
 #import "FSMoreZoneImageController.h"
 #import "FSImagePicker.h"
-#import "FSMoreImageModel.h"
+#import "FSIPModel.h"
 #import "FSMoreZoneImageCell.h"
 #import "FSAllImageController.h"
 #import "FSImagePickerController.h"
@@ -54,7 +54,7 @@
     NSString *key = [_allKeys objectAtIndex:indexPath.row];
     NSArray *array = [_allImages objectForKey:key];
     if (array.count) {
-        FSMoreImageModel *model = array[array.count - 1];
+        FSIPModel *model = array[array.count - 1];
         cell.model = model;
     }
     cell.textLabel.text = [[NSString alloc] initWithFormat:@"%@ (%@)",key,@(array.count)];
