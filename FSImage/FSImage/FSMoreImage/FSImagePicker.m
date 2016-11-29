@@ -99,7 +99,6 @@
     }];
 }
 
-
 - (NSInteger)sizeForImageWithAsset:(PHAsset *)asset
 {
     PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];

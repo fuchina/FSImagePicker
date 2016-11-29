@@ -106,7 +106,7 @@
     _bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - 50, self.view.bounds.size.width, 50)];
     [self.view addSubview:_bottomView];
     UIView *colorView = [[UIView alloc] initWithFrame:_bottomView.bounds];
-    colorView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.1];
+    colorView.backgroundColor = [UIColor colorWithRed:34 / 255.0 green:34 / 255.0 blue:34 / 255.0 alpha:.7];
     [_bottomView addSubview:colorView];
     
     FSImagePicker *picker = self.imageNavigationController.picker;
