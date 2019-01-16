@@ -9,7 +9,6 @@
 #import "ViewController.h"
 #import "FSMoreZoneImageController.h"
 #import "FSImagePickerController.h"
-#import "FSPhotoPickerController.h"
 #import "MSImagePickerController.h"
 
 @interface ViewController ()

@@ -1,0 +1,16 @@
+PODS:
+  - FSImagePicker (0.0.1)
+
+DEPENDENCIES:
+  - FSImagePicker (from `../`)
+
+EXTERNAL SOURCES:
+  FSImagePicker:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  FSImagePicker: da4b813339e8ae56a86c3fdf5b3a62e344009875
+
+PODFILE CHECKSUM: 4a170b3ddaa2685711c1be0d396ec9b014929f9c
+
+COCOAPODS: 1.5.3

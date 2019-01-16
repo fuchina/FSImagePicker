@@ -7,23 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C62139E1DDF0A7800DAE504 /* FSPPSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C62139D1DDF0A7800DAE504 /* FSPPSelectView.m */; };
-		5C6213A11DDF0AFB00DAE504 /* FSRunTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6213A01DDF0AFB00DAE504 /* FSRunTime.m */; };
-		5C67C4781DED2DA600E5906B /* FSIPModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C67C4771DED2DA600E5906B /* FSIPModel.m */; };
-		5C96BD501DAB7C9900942EE0 /* UIView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C96BD4F1DAB7C9900942EE0 /* UIView+Addition.m */; };
-		5CA725E71DACD8A200A001E8 /* FSMoreZoneImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA725E61DACD8A200A001E8 /* FSMoreZoneImageController.m */; };
-		5CBC834E1DEC14A1001B0A8F /* FSIPImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CBC834D1DEC14A1001B0A8F /* FSIPImageCell.m */; };
-		5CBC83511DEC3E2A001B0A8F /* FSPreviewPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CBC83501DEC3E2A001B0A8F /* FSPreviewPhotoController.m */; };
-		5CD70DE71DC8831F0003F791 /* FSCountButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD70DE61DC8831F0003F791 /* FSCountButton.m */; };
-		5CDBB4421DB0C8D8001C1C26 /* FSImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDBB4411DB0C8D8001C1C26 /* FSImagePickerController.m */; };
-		5CDBB4451DB0C956001C1C26 /* FSAllImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDBB4441DB0C956001C1C26 /* FSAllImageController.m */; };
-		5CDBB4511DB0CB99001C1C26 /* FSBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDBB4481DB0CB99001C1C26 /* FSBackButton.m */; };
-		5CDBB4521DB0CB99001C1C26 /* FSBeyondButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDBB44A1DB0CB99001C1C26 /* FSBeyondButton.m */; };
-		5CDBB4531DB0CB99001C1C26 /* FSButtonLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDBB44C1DB0CB99001C1C26 /* FSButtonLabel.m */; };
-		5CDBB4541DB0CB99001C1C26 /* FSMoreImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDBB44E1DB0CB99001C1C26 /* FSMoreImageCell.m */; };
-		5CDBB4551DB0CB99001C1C26 /* FSMoreZoneImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDBB4501DB0CB99001C1C26 /* FSMoreZoneImageCell.m */; };
-		5CDBB45B1DB0CFFF001C1C26 /* FSImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDBB45A1DB0CFFF001C1C26 /* FSImagePicker.m */; };
-		5CEC7FB01DDEA14E00628AC7 /* FSPhotoPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC7FAF1DDEA14E00628AC7 /* FSPhotoPickerController.m */; };
 		5CEC7FB51DDEA92D00628AC7 /* AssetsPickerChecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CEC7FB21DDEA92D00628AC7 /* AssetsPickerChecked@2x.png */; };
 		5CEC7FB61DDEA92D00628AC7 /* MSImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC7FB41DDEA92D00628AC7 /* MSImagePickerController.m */; };
 		5CF792A21DAA56D400078EA5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF792A11DAA56D400078EA5 /* main.m */; };
@@ -32,45 +15,10 @@
 		5CF792AB1DAA56D500078EA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CF792A91DAA56D500078EA5 /* Main.storyboard */; };
 		5CF792AD1DAA56D500078EA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CF792AC1DAA56D500078EA5 /* Assets.xcassets */; };
 		5CF792B01DAA56D500078EA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CF792AE1DAA56D500078EA5 /* LaunchScreen.storyboard */; };
-		71A66E751DEC759B002C28B9 /* FSIPTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A66E741DEC759B002C28B9 /* FSIPTool.m */; };
+		CB784E4E9C351A53C0660F3D /* libPods-FSImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3E8AA079793A852F537E98 /* libPods-FSImage.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5C62139C1DDF0A7800DAE504 /* FSPPSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPPSelectView.h; sourceTree = "<group>"; };
-		5C62139D1DDF0A7800DAE504 /* FSPPSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPPSelectView.m; sourceTree = "<group>"; };
-		5C62139F1DDF0AFB00DAE504 /* FSRunTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRunTime.h; sourceTree = "<group>"; };
-		5C6213A01DDF0AFB00DAE504 /* FSRunTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRunTime.m; sourceTree = "<group>"; };
-		5C67C4761DED2DA600E5906B /* FSIPModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSIPModel.h; sourceTree = "<group>"; };
-		5C67C4771DED2DA600E5906B /* FSIPModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSIPModel.m; sourceTree = "<group>"; };
-		5C96BD4E1DAB7C9900942EE0 /* UIView+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Addition.h"; sourceTree = "<group>"; };
-		5C96BD4F1DAB7C9900942EE0 /* UIView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Addition.m"; sourceTree = "<group>"; };
-		5CA725DE1DAC926F00A001E8 /* FSMoreImageHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSMoreImageHeader.h; sourceTree = "<group>"; };
-		5CA725E51DACD8A200A001E8 /* FSMoreZoneImageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMoreZoneImageController.h; sourceTree = "<group>"; };
-		5CA725E61DACD8A200A001E8 /* FSMoreZoneImageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMoreZoneImageController.m; sourceTree = "<group>"; };
-		5CBC834C1DEC14A1001B0A8F /* FSIPImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSIPImageCell.h; path = ../FSIPImageCell.h; sourceTree = "<group>"; };
-		5CBC834D1DEC14A1001B0A8F /* FSIPImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSIPImageCell.m; path = ../FSIPImageCell.m; sourceTree = "<group>"; };
-		5CBC834F1DEC3E2A001B0A8F /* FSPreviewPhotoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPreviewPhotoController.h; sourceTree = "<group>"; };
-		5CBC83501DEC3E2A001B0A8F /* FSPreviewPhotoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPreviewPhotoController.m; sourceTree = "<group>"; };
-		5CD70DE51DC8831F0003F791 /* FSCountButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSCountButton.h; path = FSImage/FSMoreImage/FSCountButton.h; sourceTree = SOURCE_ROOT; };
-		5CD70DE61DC8831F0003F791 /* FSCountButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSCountButton.m; path = FSImage/FSMoreImage/FSCountButton.m; sourceTree = SOURCE_ROOT; };
-		5CDBB4401DB0C8D8001C1C26 /* FSImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImagePickerController.h; sourceTree = "<group>"; };
-		5CDBB4411DB0C8D8001C1C26 /* FSImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImagePickerController.m; sourceTree = "<group>"; };
-		5CDBB4431DB0C956001C1C26 /* FSAllImageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSAllImageController.h; sourceTree = "<group>"; };
-		5CDBB4441DB0C956001C1C26 /* FSAllImageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSAllImageController.m; sourceTree = "<group>"; };
-		5CDBB4471DB0CB99001C1C26 /* FSBackButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBackButton.h; sourceTree = "<group>"; };
-		5CDBB4481DB0CB99001C1C26 /* FSBackButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBackButton.m; sourceTree = "<group>"; };
-		5CDBB4491DB0CB99001C1C26 /* FSBeyondButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBeyondButton.h; sourceTree = "<group>"; };
-		5CDBB44A1DB0CB99001C1C26 /* FSBeyondButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBeyondButton.m; sourceTree = "<group>"; };
-		5CDBB44B1DB0CB99001C1C26 /* FSButtonLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSButtonLabel.h; sourceTree = "<group>"; };
-		5CDBB44C1DB0CB99001C1C26 /* FSButtonLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSButtonLabel.m; sourceTree = "<group>"; };
-		5CDBB44D1DB0CB99001C1C26 /* FSMoreImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMoreImageCell.h; sourceTree = "<group>"; };
-		5CDBB44E1DB0CB99001C1C26 /* FSMoreImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMoreImageCell.m; sourceTree = "<group>"; };
-		5CDBB44F1DB0CB99001C1C26 /* FSMoreZoneImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMoreZoneImageCell.h; sourceTree = "<group>"; };
-		5CDBB4501DB0CB99001C1C26 /* FSMoreZoneImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMoreZoneImageCell.m; sourceTree = "<group>"; };
-		5CDBB4591DB0CFFF001C1C26 /* FSImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImagePicker.h; sourceTree = "<group>"; };
-		5CDBB45A1DB0CFFF001C1C26 /* FSImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImagePicker.m; sourceTree = "<group>"; };
-		5CEC7FAE1DDEA14E00628AC7 /* FSPhotoPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPhotoPickerController.h; sourceTree = "<group>"; };
-		5CEC7FAF1DDEA14E00628AC7 /* FSPhotoPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPhotoPickerController.m; sourceTree = "<group>"; };
 		5CEC7FB21DDEA92D00628AC7 /* AssetsPickerChecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AssetsPickerChecked@2x.png"; sourceTree = "<group>"; };
 		5CEC7FB31DDEA92D00628AC7 /* MSImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSImagePickerController.h; sourceTree = "<group>"; };
 		5CEC7FB41DDEA92D00628AC7 /* MSImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSImagePickerController.m; sourceTree = "<group>"; };
@@ -84,8 +32,9 @@
 		5CF792AC1DAA56D500078EA5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CF792AF1DAA56D500078EA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5CF792B11DAA56D500078EA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		71A66E731DEC759B002C28B9 /* FSIPTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSIPTool.h; sourceTree = "<group>"; };
-		71A66E741DEC759B002C28B9 /* FSIPTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSIPTool.m; sourceTree = "<group>"; };
+		CDC0E45AD6C26A3E5C55FDE3 /* Pods-FSImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FSImage.release.xcconfig"; path = "Pods/Target Support Files/Pods-FSImage/Pods-FSImage.release.xcconfig"; sourceTree = "<group>"; };
+		E46497828C7E0979BAF71DA8 /* Pods-FSImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FSImage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FSImage/Pods-FSImage.debug.xcconfig"; sourceTree = "<group>"; };
+		FF3E8AA079793A852F537E98 /* libPods-FSImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FSImage.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,46 +42,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB784E4E9C351A53C0660F3D /* libPods-FSImage.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5CDBB4461DB0CB99001C1C26 /* FSIPViews */ = {
-			isa = PBXGroup;
-			children = (
-				5CD70DE51DC8831F0003F791 /* FSCountButton.h */,
-				5CD70DE61DC8831F0003F791 /* FSCountButton.m */,
-				5CDBB4471DB0CB99001C1C26 /* FSBackButton.h */,
-				5CDBB4481DB0CB99001C1C26 /* FSBackButton.m */,
-				5CDBB4491DB0CB99001C1C26 /* FSBeyondButton.h */,
-				5CDBB44A1DB0CB99001C1C26 /* FSBeyondButton.m */,
-				5CDBB44B1DB0CB99001C1C26 /* FSButtonLabel.h */,
-				5CDBB44C1DB0CB99001C1C26 /* FSButtonLabel.m */,
-				5CDBB44D1DB0CB99001C1C26 /* FSMoreImageCell.h */,
-				5CDBB44E1DB0CB99001C1C26 /* FSMoreImageCell.m */,
-				5CDBB44F1DB0CB99001C1C26 /* FSMoreZoneImageCell.h */,
-				5CDBB4501DB0CB99001C1C26 /* FSMoreZoneImageCell.m */,
-				5CBC834C1DEC14A1001B0A8F /* FSIPImageCell.h */,
-				5CBC834D1DEC14A1001B0A8F /* FSIPImageCell.m */,
-			);
-			path = FSIPViews;
-			sourceTree = "<group>";
-		};
-		5CEC7FAD1DDEA12D00628AC7 /* FSPhotoPicker */ = {
-			isa = PBXGroup;
-			children = (
-				5CEC7FAE1DDEA14E00628AC7 /* FSPhotoPickerController.h */,
-				5CEC7FAF1DDEA14E00628AC7 /* FSPhotoPickerController.m */,
-				5C62139C1DDF0A7800DAE504 /* FSPPSelectView.h */,
-				5C62139D1DDF0A7800DAE504 /* FSPPSelectView.m */,
-				5C62139F1DDF0AFB00DAE504 /* FSRunTime.h */,
-				5C6213A01DDF0AFB00DAE504 /* FSRunTime.m */,
-			);
-			path = FSPhotoPicker;
-			sourceTree = SOURCE_ROOT;
-		};
 		5CEC7FB11DDEA92D00628AC7 /* MSImagePicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +64,8 @@
 			children = (
 				5CF7929F1DAA56D400078EA5 /* FSImage */,
 				5CF7929E1DAA56D400078EA5 /* Products */,
+				AEF490F548463A6CCFB82175 /* Pods */,
+				631A580200E0EF5FFDD496EF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -163,8 +81,6 @@
 			isa = PBXGroup;
 			children = (
 				5CEC7FB11DDEA92D00628AC7 /* MSImagePicker */,
-				5CEC7FAD1DDEA12D00628AC7 /* FSPhotoPicker */,
-				5CF792BA1DAA58C800078EA5 /* FSMoreImage */,
 				5CF792A31DAA56D500078EA5 /* AppDelegate.h */,
 				5CF792A41DAA56D500078EA5 /* AppDelegate.m */,
 				5CF792A61DAA56D500078EA5 /* ViewController.h */,
@@ -186,29 +102,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		5CF792BA1DAA58C800078EA5 /* FSMoreImage */ = {
+		631A580200E0EF5FFDD496EF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5CA725DE1DAC926F00A001E8 /* FSMoreImageHeader.h */,
-				5C96BD4E1DAB7C9900942EE0 /* UIView+Addition.h */,
-				5C96BD4F1DAB7C9900942EE0 /* UIView+Addition.m */,
-				5CDBB4591DB0CFFF001C1C26 /* FSImagePicker.h */,
-				5CDBB45A1DB0CFFF001C1C26 /* FSImagePicker.m */,
-				5CA725E51DACD8A200A001E8 /* FSMoreZoneImageController.h */,
-				5CA725E61DACD8A200A001E8 /* FSMoreZoneImageController.m */,
-				5CDBB4401DB0C8D8001C1C26 /* FSImagePickerController.h */,
-				5CDBB4411DB0C8D8001C1C26 /* FSImagePickerController.m */,
-				5CDBB4431DB0C956001C1C26 /* FSAllImageController.h */,
-				5CDBB4441DB0C956001C1C26 /* FSAllImageController.m */,
-				5CBC834F1DEC3E2A001B0A8F /* FSPreviewPhotoController.h */,
-				5CBC83501DEC3E2A001B0A8F /* FSPreviewPhotoController.m */,
-				71A66E731DEC759B002C28B9 /* FSIPTool.h */,
-				71A66E741DEC759B002C28B9 /* FSIPTool.m */,
-				5C67C4761DED2DA600E5906B /* FSIPModel.h */,
-				5C67C4771DED2DA600E5906B /* FSIPModel.m */,
-				5CDBB4461DB0CB99001C1C26 /* FSIPViews */,
+				FF3E8AA079793A852F537E98 /* libPods-FSImage.a */,
 			);
-			path = FSMoreImage;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AEF490F548463A6CCFB82175 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E46497828C7E0979BAF71DA8 /* Pods-FSImage.debug.xcconfig */,
+				CDC0E45AD6C26A3E5C55FDE3 /* Pods-FSImage.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,6 +126,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5CF792B41DAA56D500078EA5 /* Build configuration list for PBXNativeTarget "FSImage" */;
 			buildPhases = (
+				60FE061722A65300CCC64ED1 /* [CP] Check Pods Manifest.lock */,
 				5CF792991DAA56D400078EA5 /* Sources */,
 				5CF7929A1DAA56D400078EA5 /* Frameworks */,
 				5CF7929B1DAA56D400078EA5 /* Resources */,
@@ -279,33 +188,40 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		60FE061722A65300CCC64ED1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FSImage-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5CF792991DAA56D400078EA5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CBC834E1DEC14A1001B0A8F /* FSIPImageCell.m in Sources */,
 				5CF792A81DAA56D500078EA5 /* ViewController.m in Sources */,
 				5CF792A51DAA56D500078EA5 /* AppDelegate.m in Sources */,
-				5C62139E1DDF0A7800DAE504 /* FSPPSelectView.m in Sources */,
-				5CA725E71DACD8A200A001E8 /* FSMoreZoneImageController.m in Sources */,
-				5CDBB4511DB0CB99001C1C26 /* FSBackButton.m in Sources */,
 				5CEC7FB61DDEA92D00628AC7 /* MSImagePickerController.m in Sources */,
-				5C67C4781DED2DA600E5906B /* FSIPModel.m in Sources */,
-				5CEC7FB01DDEA14E00628AC7 /* FSPhotoPickerController.m in Sources */,
-				5CDBB4451DB0C956001C1C26 /* FSAllImageController.m in Sources */,
-				5C6213A11DDF0AFB00DAE504 /* FSRunTime.m in Sources */,
-				5CDBB4541DB0CB99001C1C26 /* FSMoreImageCell.m in Sources */,
-				5C96BD501DAB7C9900942EE0 /* UIView+Addition.m in Sources */,
-				5CDBB45B1DB0CFFF001C1C26 /* FSImagePicker.m in Sources */,
-				5CBC83511DEC3E2A001B0A8F /* FSPreviewPhotoController.m in Sources */,
-				5CD70DE71DC8831F0003F791 /* FSCountButton.m in Sources */,
-				5CDBB4551DB0CB99001C1C26 /* FSMoreZoneImageCell.m in Sources */,
-				71A66E751DEC759B002C28B9 /* FSIPTool.m in Sources */,
-				5CDBB4421DB0C8D8001C1C26 /* FSImagePickerController.m in Sources */,
 				5CF792A21DAA56D400078EA5 /* main.m in Sources */,
-				5CDBB4521DB0CB99001C1C26 /* FSBeyondButton.m in Sources */,
-				5CDBB4531DB0CB99001C1C26 /* FSButtonLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,6 +337,7 @@
 		};
 		5CF792B51DAA56D500078EA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E46497828C7E0979BAF71DA8 /* Pods-FSImage.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = BL86JR5S2K;
@@ -434,6 +351,7 @@
 		};
 		5CF792B61DAA56D500078EA5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CDC0E45AD6C26A3E5C55FDE3 /* Pods-FSImage.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = BL86JR5S2K;

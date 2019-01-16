@@ -1,0 +1,647 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0786E10A080CD3F825E0CAD8E5F02CDE /* FSBackButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 7574ADFE739AB4F1A0C5E073C0D03DD1 /* FSBackButton.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		0D6AC74187E6A649FC19006B8E95528E /* FSIPTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 570006D2B7F74FED83F14EEB3FC031E6 /* FSIPTool.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		12C2AF599930148708F53837199FD67E /* FSPreviewPhotoController.h in Headers */ = {isa = PBXBuildFile; fileRef = E568A0F01B665B6C6B5C1F91557DC865 /* FSPreviewPhotoController.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		17FA0128E991BDB17ABB3891E4D61524 /* FSBeyondButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C0B36888EB70A173D2E06A7787FB437 /* FSBeyondButton.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		1FD26CA4AACEF181C63830106391B695 /* Pods-FSImage-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C5E16B71B6001B3A7D58DC9BA14979 /* Pods-FSImage-dummy.m */; };
+		233916F8DC1DB2C82111079595985C8E /* FSAllImageController.h in Headers */ = {isa = PBXBuildFile; fileRef = C3DFFB46BAC8662C3538C7C84089DA01 /* FSAllImageController.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		23F003ED28E4E2BB266402B11E8BFC42 /* FSMoreImageCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 28673168FD4E7FCDA81ADA8BD80D8013 /* FSMoreImageCell.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		28AFF440251C4F2A0DD6BF275957A6C3 /* FSBeyondButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7644A177B8757DA0EF3D4B8F5C26AC25 /* FSBeyondButton.m */; };
+		2CEA6ADA550B9E8B90E65EAF570D0F16 /* FSMoreZoneImageCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 89C50D0817C98CE74DEFCCBF2E201F6A /* FSMoreZoneImageCell.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		2D7A562A32B17E6063157D31FBAFBFA9 /* FSImagePicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A831178DFD547512E446DC8FFC07E03 /* FSImagePicker-dummy.m */; };
+		2DD11417B22C5A8316644A5D5965E73F /* FSMoreImageHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 1723BCA639423948ED34233C7280FCD7 /* FSMoreImageHeader.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		2E49E3CBB50001697ADBC5097BE19C77 /* FSMoreZoneImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EA463A1DCFFF7B216809C1ACE86296 /* FSMoreZoneImageController.m */; };
+		32D4ABAD81D03813BA3BCE5F33FE2DF7 /* FSPreviewPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD2F3D992F93DCD92E99921CF064A68 /* FSPreviewPhotoController.m */; };
+		354FA9C320DC7A114FA5D448D5A2AF1C /* FSIPModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BF704773F5DA66B22E60A0ED9EFF0EAE /* FSIPModel.m */; };
+		378506DED38540F82D63555900A1C13F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E538F0B835A53761AF5FF2D2D75573E8 /* UIKit.framework */; };
+		391353E39FEEB39E5A3323EA11DC99BC /* FSIPModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EBF6B689295B00AD30D66675BE7974B /* FSIPModel.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		48755CCF83C3119BDF35DC63478E5223 /* FSMoreZoneImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E3E8D9DF51C64EF8267FFA30C14A0E6 /* FSMoreZoneImageCell.m */; };
+		5697D07DFA63BD6F7F4386E6D78EC705 /* FSMoreImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 354839A0D34ED6326CD8F9C6A65CE35F /* FSMoreImageCell.m */; };
+		5FC69B1B186715C5C0885F24632D1440 /* FSButtonLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F485BB95EAEB14933447185827B2166 /* FSButtonLabel.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		66099BBFE04F7A1F5971D6B59A133C6F /* FSIPImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B96AC0EE6CC66DEDBA2465D0D403A00 /* FSIPImageCell.m */; };
+		82D8986A998F6878D971374DA4C09A1B /* FSCountButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DA6E475F36F0FEEBBCA3DA1E4BEC02D /* FSCountButton.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		9494A1694D7A2EAF0B86733EF4D9F12F /* FSCountButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EB6D5114B958F82CD95D0CF2DAF8D612 /* FSCountButton.m */; };
+		A57C0C84E57015F225836BB9B28FCD83 /* FSImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6162A95C44F633B4F6B05D67BAE6ECEF /* FSImagePicker.m */; };
+		BB68D1184CF61DD0830B4639789EA1E5 /* FSIPImageCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 40E7EAACF669F658967211E27726D0E2 /* FSIPImageCell.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		C07F6EDBB21E07594ED48F891AE2080E /* FSMoreZoneImageController.h in Headers */ = {isa = PBXBuildFile; fileRef = A53F46B19F10E83D76A1B84A68BED869 /* FSMoreZoneImageController.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		C5947129AF0B3B54A920673DC3A3CEC4 /* FSImagePickerController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BA3312A820D410C5D11BE9218306BF9 /* FSImagePickerController.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		D7E6A2751D4D644255876034F0A4E0AD /* FSIPTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D0623820035429F2E46192B3F4BC61E /* FSIPTool.m */; };
+		E5F77E61A087E6E4516BAB1D685EAAAC /* FSButtonLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9055F2745A07F2F9016AFF7650551C8A /* FSButtonLabel.m */; };
+		EB6352D1B3A4B82DE6F292B6F01126CD /* FSAllImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6739C1EA3AA4B695398C335B8DDCCDD5 /* FSAllImageController.m */; };
+		F28FEAC85E81F6B18D75D0945B65EF93 /* FSImagePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = E173B1C2768D91081C06619E2A53496A /* FSImagePicker.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		F8FD3D0DC3161889218912CE71D210D2 /* FSImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F68EA6C859A46DD840225CE04B954C2 /* FSImagePickerController.m */; };
+		FF53386E453F33AB0A47D2A42380E046 /* FSBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA2CF251262D159B30FB9EA6A24DD06 /* FSBackButton.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B59EB53E31DF84DE49A995CEFE4ED0F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 774EA54D482D08635C1F16F98563EBD8;
+			remoteInfo = FSImagePicker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00CCCF0E8B39294E03FBA5DDE3D3A635 /* libFSImagePicker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libFSImagePicker.a; path = libFSImagePicker.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		07EA463A1DCFFF7B216809C1ACE86296 /* FSMoreZoneImageController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FSMoreZoneImageController.m; path = FSImagePicker/FSMoreZoneImageController.m; sourceTree = "<group>"; };
+		09781BFDAEC78D5DEFD227B81D25FB3C /* Pods-FSImage-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FSImage-acknowledgements.markdown"; sourceTree = "<group>"; };
+		0B96AC0EE6CC66DEDBA2465D0D403A00 /* FSIPImageCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FSIPImageCell.m; path = FSImagePicker/FSIPImageCell.m; sourceTree = "<group>"; };
+		0DA6E475F36F0FEEBBCA3DA1E4BEC02D /* FSCountButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSCountButton.h; path = FSImagePicker/FSCountButton.h; sourceTree = "<group>"; };
+		1723BCA639423948ED34233C7280FCD7 /* FSMoreImageHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSMoreImageHeader.h; path = FSImagePicker/FSMoreImageHeader.h; sourceTree = "<group>"; };
+		1EBF6B689295B00AD30D66675BE7974B /* FSIPModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSIPModel.h; path = FSImagePicker/FSIPModel.h; sourceTree = "<group>"; };
+		209F7FEBE8AF3F02402A9DA2676B25F9 /* Pods-FSImage-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FSImage-frameworks.sh"; sourceTree = "<group>"; };
+		28673168FD4E7FCDA81ADA8BD80D8013 /* FSMoreImageCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FSMoreImageCell.h; sourceTree = "<group>"; };
+		2E3E8D9DF51C64EF8267FFA30C14A0E6 /* FSMoreZoneImageCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FSMoreZoneImageCell.m; sourceTree = "<group>"; };
+		354839A0D34ED6326CD8F9C6A65CE35F /* FSMoreImageCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FSMoreImageCell.m; sourceTree = "<group>"; };
+		3AA21AEB43A091DACF34CF4082E04F8F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		3BA3312A820D410C5D11BE9218306BF9 /* FSImagePickerController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSImagePickerController.h; path = FSImagePicker/FSImagePickerController.h; sourceTree = "<group>"; };
+		3FD2F3D992F93DCD92E99921CF064A68 /* FSPreviewPhotoController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FSPreviewPhotoController.m; path = FSImagePicker/FSPreviewPhotoController.m; sourceTree = "<group>"; };
+		40E7EAACF669F658967211E27726D0E2 /* FSIPImageCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSIPImageCell.h; path = FSImagePicker/FSIPImageCell.h; sourceTree = "<group>"; };
+		48FBC65AE1927FAC4A22F56AAC1BECAC /* Pods-FSImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FSImage.release.xcconfig"; sourceTree = "<group>"; };
+		4F485BB95EAEB14933447185827B2166 /* FSButtonLabel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FSButtonLabel.h; sourceTree = "<group>"; };
+		56C5E16B71B6001B3A7D58DC9BA14979 /* Pods-FSImage-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FSImage-dummy.m"; sourceTree = "<group>"; };
+		570006D2B7F74FED83F14EEB3FC031E6 /* FSIPTool.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSIPTool.h; path = FSImagePicker/FSIPTool.h; sourceTree = "<group>"; };
+		6162A95C44F633B4F6B05D67BAE6ECEF /* FSImagePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FSImagePicker.m; path = FSImagePicker/FSImagePicker.m; sourceTree = "<group>"; };
+		6739C1EA3AA4B695398C335B8DDCCDD5 /* FSAllImageController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FSAllImageController.m; path = FSImagePicker/FSAllImageController.m; sourceTree = "<group>"; };
+		6C0B36888EB70A173D2E06A7787FB437 /* FSBeyondButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FSBeyondButton.h; sourceTree = "<group>"; };
+		6F68EA6C859A46DD840225CE04B954C2 /* FSImagePickerController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FSImagePickerController.m; path = FSImagePicker/FSImagePickerController.m; sourceTree = "<group>"; };
+		707903C16E74B6EEB3483501DF3BF762 /* FSImagePicker.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = FSImagePicker.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		744B719620F49EFC81258CAF4998E5F7 /* FSImagePicker.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FSImagePicker.xcconfig; sourceTree = "<group>"; };
+		7574ADFE739AB4F1A0C5E073C0D03DD1 /* FSBackButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FSBackButton.h; sourceTree = "<group>"; };
+		7644A177B8757DA0EF3D4B8F5C26AC25 /* FSBeyondButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FSBeyondButton.m; sourceTree = "<group>"; };
+		7A831178DFD547512E446DC8FFC07E03 /* FSImagePicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FSImagePicker-dummy.m"; sourceTree = "<group>"; };
+		7CE239AF00219F4A00131F237E677BA9 /* FSImagePicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FSImagePicker-prefix.pch"; sourceTree = "<group>"; };
+		7D0623820035429F2E46192B3F4BC61E /* FSIPTool.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FSIPTool.m; path = FSImagePicker/FSIPTool.m; sourceTree = "<group>"; };
+		81C53B67C7F464C6C1C84E79A0B45B76 /* libPods-FSImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-FSImage.a"; path = "libPods-FSImage.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		89C50D0817C98CE74DEFCCBF2E201F6A /* FSMoreZoneImageCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FSMoreZoneImageCell.h; sourceTree = "<group>"; };
+		8BA2CF251262D159B30FB9EA6A24DD06 /* FSBackButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FSBackButton.m; sourceTree = "<group>"; };
+		9055F2745A07F2F9016AFF7650551C8A /* FSButtonLabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FSButtonLabel.m; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A53F46B19F10E83D76A1B84A68BED869 /* FSMoreZoneImageController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSMoreZoneImageController.h; path = FSImagePicker/FSMoreZoneImageController.h; sourceTree = "<group>"; };
+		BF704773F5DA66B22E60A0ED9EFF0EAE /* FSIPModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FSIPModel.m; path = FSImagePicker/FSIPModel.m; sourceTree = "<group>"; };
+		C3DFFB46BAC8662C3538C7C84089DA01 /* FSAllImageController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSAllImageController.h; path = FSImagePicker/FSAllImageController.h; sourceTree = "<group>"; };
+		D259B207B23C2B972091BA856E894ACF /* Pods-FSImage-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FSImage-resources.sh"; sourceTree = "<group>"; };
+		E173B1C2768D91081C06619E2A53496A /* FSImagePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSImagePicker.h; path = FSImagePicker/FSImagePicker.h; sourceTree = "<group>"; };
+		E538F0B835A53761AF5FF2D2D75573E8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		E568A0F01B665B6C6B5C1F91557DC865 /* FSPreviewPhotoController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSPreviewPhotoController.h; path = FSImagePicker/FSPreviewPhotoController.h; sourceTree = "<group>"; };
+		EB6D5114B958F82CD95D0CF2DAF8D612 /* FSCountButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FSCountButton.m; path = FSImagePicker/FSCountButton.m; sourceTree = "<group>"; };
+		ED03F7A34A67B01C60C9DB4A992AF1F0 /* Pods-FSImage-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FSImage-acknowledgements.plist"; sourceTree = "<group>"; };
+		F6632A06311D95687904215934D5024E /* Pods-FSImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FSImage.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1FB970951BC25666F0443511D98CEC43 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				378506DED38540F82D63555900A1C13F /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBDD3E51BFFC7F48782EA73AB6C365E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080BB3D749867432622875649E98BE31 /* Pods-FSImage */ = {
+			isa = PBXGroup;
+			children = (
+				09781BFDAEC78D5DEFD227B81D25FB3C /* Pods-FSImage-acknowledgements.markdown */,
+				ED03F7A34A67B01C60C9DB4A992AF1F0 /* Pods-FSImage-acknowledgements.plist */,
+				56C5E16B71B6001B3A7D58DC9BA14979 /* Pods-FSImage-dummy.m */,
+				209F7FEBE8AF3F02402A9DA2676B25F9 /* Pods-FSImage-frameworks.sh */,
+				D259B207B23C2B972091BA856E894ACF /* Pods-FSImage-resources.sh */,
+				F6632A06311D95687904215934D5024E /* Pods-FSImage.debug.xcconfig */,
+				48FBC65AE1927FAC4A22F56AAC1BECAC /* Pods-FSImage.release.xcconfig */,
+			);
+			name = "Pods-FSImage";
+			path = "Target Support Files/Pods-FSImage";
+			sourceTree = "<group>";
+		};
+		0B04188979F3F1A25C9197A9DAE166D6 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				15E0A603B96E5A7FDB639D61D0F1F297 /* FSImagePicker */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		15E0A603B96E5A7FDB639D61D0F1F297 /* FSImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				C3DFFB46BAC8662C3538C7C84089DA01 /* FSAllImageController.h */,
+				6739C1EA3AA4B695398C335B8DDCCDD5 /* FSAllImageController.m */,
+				0DA6E475F36F0FEEBBCA3DA1E4BEC02D /* FSCountButton.h */,
+				EB6D5114B958F82CD95D0CF2DAF8D612 /* FSCountButton.m */,
+				E173B1C2768D91081C06619E2A53496A /* FSImagePicker.h */,
+				6162A95C44F633B4F6B05D67BAE6ECEF /* FSImagePicker.m */,
+				3BA3312A820D410C5D11BE9218306BF9 /* FSImagePickerController.h */,
+				6F68EA6C859A46DD840225CE04B954C2 /* FSImagePickerController.m */,
+				40E7EAACF669F658967211E27726D0E2 /* FSIPImageCell.h */,
+				0B96AC0EE6CC66DEDBA2465D0D403A00 /* FSIPImageCell.m */,
+				1EBF6B689295B00AD30D66675BE7974B /* FSIPModel.h */,
+				BF704773F5DA66B22E60A0ED9EFF0EAE /* FSIPModel.m */,
+				570006D2B7F74FED83F14EEB3FC031E6 /* FSIPTool.h */,
+				7D0623820035429F2E46192B3F4BC61E /* FSIPTool.m */,
+				1723BCA639423948ED34233C7280FCD7 /* FSMoreImageHeader.h */,
+				A53F46B19F10E83D76A1B84A68BED869 /* FSMoreZoneImageController.h */,
+				07EA463A1DCFFF7B216809C1ACE86296 /* FSMoreZoneImageController.m */,
+				E568A0F01B665B6C6B5C1F91557DC865 /* FSPreviewPhotoController.h */,
+				3FD2F3D992F93DCD92E99921CF064A68 /* FSPreviewPhotoController.m */,
+				B2FC6C1ACC7FC5E59775E302C3CC5607 /* FSIPViews */,
+				A5FA1837E194EEE13560BCE1C2BE747C /* Pod */,
+				7F4E94072ABC6DD82CD9577A967EB9FA /* Support Files */,
+			);
+			name = FSImagePicker;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		439617EAFCB50E7C1F770414D2834329 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				E538F0B835A53761AF5FF2D2D75573E8 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				0B04188979F3F1A25C9197A9DAE166D6 /* Development Pods */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				8E4F5E7B016AF6CD4CF6C0FBA0FFEF34 /* Products */,
+				9A9B56EBE4FC6A86D216A56AAA466B10 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		7F4E94072ABC6DD82CD9577A967EB9FA /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				744B719620F49EFC81258CAF4998E5F7 /* FSImagePicker.xcconfig */,
+				7A831178DFD547512E446DC8FFC07E03 /* FSImagePicker-dummy.m */,
+				7CE239AF00219F4A00131F237E677BA9 /* FSImagePicker-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "FSImage/Pods/Target Support Files/FSImagePicker";
+			sourceTree = "<group>";
+		};
+		8E4F5E7B016AF6CD4CF6C0FBA0FFEF34 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				00CCCF0E8B39294E03FBA5DDE3D3A635 /* libFSImagePicker.a */,
+				81C53B67C7F464C6C1C84E79A0B45B76 /* libPods-FSImage.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A9B56EBE4FC6A86D216A56AAA466B10 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				080BB3D749867432622875649E98BE31 /* Pods-FSImage */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		A5FA1837E194EEE13560BCE1C2BE747C /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				707903C16E74B6EEB3483501DF3BF762 /* FSImagePicker.podspec */,
+				3AA21AEB43A091DACF34CF4082E04F8F /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		B2FC6C1ACC7FC5E59775E302C3CC5607 /* FSIPViews */ = {
+			isa = PBXGroup;
+			children = (
+				7574ADFE739AB4F1A0C5E073C0D03DD1 /* FSBackButton.h */,
+				8BA2CF251262D159B30FB9EA6A24DD06 /* FSBackButton.m */,
+				6C0B36888EB70A173D2E06A7787FB437 /* FSBeyondButton.h */,
+				7644A177B8757DA0EF3D4B8F5C26AC25 /* FSBeyondButton.m */,
+				4F485BB95EAEB14933447185827B2166 /* FSButtonLabel.h */,
+				9055F2745A07F2F9016AFF7650551C8A /* FSButtonLabel.m */,
+				28673168FD4E7FCDA81ADA8BD80D8013 /* FSMoreImageCell.h */,
+				354839A0D34ED6326CD8F9C6A65CE35F /* FSMoreImageCell.m */,
+				89C50D0817C98CE74DEFCCBF2E201F6A /* FSMoreZoneImageCell.h */,
+				2E3E8D9DF51C64EF8267FFA30C14A0E6 /* FSMoreZoneImageCell.m */,
+			);
+			name = FSIPViews;
+			path = FSImagePicker/FSIPViews;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				439617EAFCB50E7C1F770414D2834329 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		42E8487223331430E614396111A3CD15 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				233916F8DC1DB2C82111079595985C8E /* FSAllImageController.h in Headers */,
+				0786E10A080CD3F825E0CAD8E5F02CDE /* FSBackButton.h in Headers */,
+				17FA0128E991BDB17ABB3891E4D61524 /* FSBeyondButton.h in Headers */,
+				5FC69B1B186715C5C0885F24632D1440 /* FSButtonLabel.h in Headers */,
+				82D8986A998F6878D971374DA4C09A1B /* FSCountButton.h in Headers */,
+				F28FEAC85E81F6B18D75D0945B65EF93 /* FSImagePicker.h in Headers */,
+				C5947129AF0B3B54A920673DC3A3CEC4 /* FSImagePickerController.h in Headers */,
+				BB68D1184CF61DD0830B4639789EA1E5 /* FSIPImageCell.h in Headers */,
+				391353E39FEEB39E5A3323EA11DC99BC /* FSIPModel.h in Headers */,
+				0D6AC74187E6A649FC19006B8E95528E /* FSIPTool.h in Headers */,
+				23F003ED28E4E2BB266402B11E8BFC42 /* FSMoreImageCell.h in Headers */,
+				2DD11417B22C5A8316644A5D5965E73F /* FSMoreImageHeader.h in Headers */,
+				2CEA6ADA550B9E8B90E65EAF570D0F16 /* FSMoreZoneImageCell.h in Headers */,
+				C07F6EDBB21E07594ED48F891AE2080E /* FSMoreZoneImageController.h in Headers */,
+				12C2AF599930148708F53837199FD67E /* FSPreviewPhotoController.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49718F9E7BE91BABBD1C9DF4DAB00BFD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		774EA54D482D08635C1F16F98563EBD8 /* FSImagePicker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4734027E04ADB735C5BA3E3FBAA50FBD /* Build configuration list for PBXNativeTarget "FSImagePicker" */;
+			buildPhases = (
+				42E8487223331430E614396111A3CD15 /* Headers */,
+				5CAC7FFC1D021A4E31FCB00A57608F1F /* Sources */,
+				1FB970951BC25666F0443511D98CEC43 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FSImagePicker;
+			productName = FSImagePicker;
+			productReference = 00CCCF0E8B39294E03FBA5DDE3D3A635 /* libFSImagePicker.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		A3C38701C64A01ADE64E94DD0AF9DC01 /* Pods-FSImage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F7F08933C2E4A9657A05A8BD92F330B7 /* Build configuration list for PBXNativeTarget "Pods-FSImage" */;
+			buildPhases = (
+				49718F9E7BE91BABBD1C9DF4DAB00BFD /* Headers */,
+				EDB05F948CCC4D84CB68050EBBFD18E9 /* Sources */,
+				FBDD3E51BFFC7F48782EA73AB6C365E4 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F7682C31B6A62B47EBAE238F2FDD1D09 /* PBXTargetDependency */,
+			);
+			name = "Pods-FSImage";
+			productName = "Pods-FSImage";
+			productReference = 81C53B67C7F464C6C1C84E79A0B45B76 /* libPods-FSImage.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 8E4F5E7B016AF6CD4CF6C0FBA0FFEF34 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				774EA54D482D08635C1F16F98563EBD8 /* FSImagePicker */,
+				A3C38701C64A01ADE64E94DD0AF9DC01 /* Pods-FSImage */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5CAC7FFC1D021A4E31FCB00A57608F1F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB6352D1B3A4B82DE6F292B6F01126CD /* FSAllImageController.m in Sources */,
+				FF53386E453F33AB0A47D2A42380E046 /* FSBackButton.m in Sources */,
+				28AFF440251C4F2A0DD6BF275957A6C3 /* FSBeyondButton.m in Sources */,
+				E5F77E61A087E6E4516BAB1D685EAAAC /* FSButtonLabel.m in Sources */,
+				9494A1694D7A2EAF0B86733EF4D9F12F /* FSCountButton.m in Sources */,
+				2D7A562A32B17E6063157D31FBAFBFA9 /* FSImagePicker-dummy.m in Sources */,
+				A57C0C84E57015F225836BB9B28FCD83 /* FSImagePicker.m in Sources */,
+				F8FD3D0DC3161889218912CE71D210D2 /* FSImagePickerController.m in Sources */,
+				66099BBFE04F7A1F5971D6B59A133C6F /* FSIPImageCell.m in Sources */,
+				354FA9C320DC7A114FA5D448D5A2AF1C /* FSIPModel.m in Sources */,
+				D7E6A2751D4D644255876034F0A4E0AD /* FSIPTool.m in Sources */,
+				5697D07DFA63BD6F7F4386E6D78EC705 /* FSMoreImageCell.m in Sources */,
+				48755CCF83C3119BDF35DC63478E5223 /* FSMoreZoneImageCell.m in Sources */,
+				2E49E3CBB50001697ADBC5097BE19C77 /* FSMoreZoneImageController.m in Sources */,
+				32D4ABAD81D03813BA3BCE5F33FE2DF7 /* FSPreviewPhotoController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDB05F948CCC4D84CB68050EBBFD18E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FD26CA4AACEF181C63830106391B695 /* Pods-FSImage-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F7682C31B6A62B47EBAE238F2FDD1D09 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FSImagePicker;
+			target = 774EA54D482D08635C1F16F98563EBD8 /* FSImagePicker */;
+			targetProxy = B59EB53E31DF84DE49A995CEFE4ED0F3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1F1A8073AEDE4E896FF27AD6F8D3C1F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6632A06311D95687904215934D5024E /* Pods-FSImage.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		42DF3F2DC4CB9F843D22664F0415B897 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 744B719620F49EFC81258CAF4998E5F7 /* FSImagePicker.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/FSImagePicker/FSImagePicker-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = FSImagePicker;
+				PRODUCT_NAME = FSImagePicker;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6FA63BA38C09D752B4D3674A70F53E69 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48FBC65AE1927FAC4A22F56AAC1BECAC /* Pods-FSImage.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		72B82DE308B5766239E59CAF7D0A554A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 744B719620F49EFC81258CAF4998E5F7 /* FSImagePicker.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/FSImagePicker/FSImagePicker-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = FSImagePicker;
+				PRODUCT_NAME = FSImagePicker;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		82806629B2B1887DC2562CDFA2424072 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		DE019C4B61FE581BA057110FBC49EAA5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				82806629B2B1887DC2562CDFA2424072 /* Debug */,
+				DE019C4B61FE581BA057110FBC49EAA5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4734027E04ADB735C5BA3E3FBAA50FBD /* Build configuration list for PBXNativeTarget "FSImagePicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72B82DE308B5766239E59CAF7D0A554A /* Debug */,
+				42DF3F2DC4CB9F843D22664F0415B897 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F7F08933C2E4A9657A05A8BD92F330B7 /* Build configuration list for PBXNativeTarget "Pods-FSImage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F1A8073AEDE4E896FF27AD6F8D3C1F3 /* Debug */,
+				6FA63BA38C09D752B4D3674A70F53E69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
