@@ -29,7 +29,10 @@
 - (NSDictionary *)getThumbnailImages;
 
 // 稍微清晰的图片，但不是原图
-- (void)clearnessImageForModel:(FSIPModel *)model completion:(void(^)(UIImage *bImage))completion;
++ (void)clearnessImageForModel:(FSIPModel *)model completion:(void(^)(UIImage *bImage))completion;
+
+// 获取缩略图
++ (void)thumbnailImageForModel:(FSIPModel *)model completion:(void(^)(UIImage *bImage))completion;
 
 // 图片大小
 - (NSInteger)sizeForImageWithAsset:(PHAsset *)asset;

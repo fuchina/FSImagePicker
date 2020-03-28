@@ -18,9 +18,6 @@
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": [
-    "FSImagePicker/*",
-    "FSImagePicker/FSIPViews/*"
-  ],
+  "source_files": "FSImagePicker/**/*.{c,cpp,h,m}",
   "frameworks": "UIKit"
 }

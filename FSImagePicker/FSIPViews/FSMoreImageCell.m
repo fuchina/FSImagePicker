@@ -40,40 +40,20 @@
     return self;
 }
 
-- (void)setModel:(FSIPModel *)model
-{
+- (void)setModel:(FSIPModel *)model {
     if (_model != model) {
         _model = model;
         
         CGFloat width = ([UIScreen mainScreen].bounds.size.width - 25) / 4;
         
-        if (!model.image) {
-            dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
-                options.resizeMode = PHImageRequestOptionsResizeModeFast;
-                NSInteger pWidth = (NSInteger)(width * 2);
-                __weak FSMoreImageCell *this = self;
-                __block FSIPModel *tmpModel = model;
-                [[PHImageManager defaultManager] requestImageForAsset:model.asset targetSize:CGSizeMake(pWidth, pWidth * model.asset.pixelHeight / model.asset.pixelWidth) contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        BOOL downloadFinined = ![[info objectForKey:PHImageCancelledKey] boolValue] && ![info objectForKey:PHImageErrorKey] && ![[info objectForKey:PHImageResultIsDegradedKey] boolValue];
-                        if (downloadFinined) {
-                            this.imageView.image = result;
-#if DEBUG
-                            NSLog(@"%@",result);
-#endif
-                            tmpModel.image = result;
-                            tmpModel.info = info;
-                        }else{
-                            this.imageView.image = result;
-                        }
-                    });
-                }];
-            });
-        }else{
+        if (model.image) {
             _imageView.image = model.image;
+        } else {
+            [FSImagePicker thumbnailImageForModel:model completion:^(UIImage *bImage) {
+                self.imageView.image = bImage;
+            }];
         }
-        
+                
         _imageView.frame = CGRectMake(0, 0, width, width);
         _button.frame = CGRectMake(self.bounds.size.width - 44, 0, 44, 44);
     }

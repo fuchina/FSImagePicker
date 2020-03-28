@@ -18,18 +18,15 @@
 @implementation FSImagePickerController
 
 #if DEBUG
-- (void)dealloc
-{
+- (void)dealloc {
     NSLog(@"%s",__FUNCTION__);
 }
 #endif
 
-+ (void)presentViewControllerFrom:(UIViewController *)baseController maxCount:(NSInteger)maxCount block:(void(^)(NSArray<UIImage *> *photos,NSArray<PHAsset *> *assets))block
-{
++ (void)presentViewControllerFrom:(UIViewController *)baseController maxCount:(NSInteger)maxCount block:(void(^)(NSArray<UIImage *> *photos,NSArray<PHAsset *> *assets))block {
     [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (status == PHAuthorizationStatusRestricted || status == PHAuthorizationStatusDenied)
-            {
+            if (status == PHAuthorizationStatusRestricted || status == PHAuthorizationStatusDenied) {
                 UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"没有相册权限" message:@"请去相册中允许访问相册" preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *doneAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                     NSURL *url = [NSURL URLWithString:@"prefs:root=Privacy&path=PHOTOS"];
@@ -52,8 +49,7 @@
     }];
 }
 
-- (instancetype)initWithLimitCount:(NSInteger)maxCount
-{
+- (instancetype)initWithLimitCount:(NSInteger)maxCount {
     FSMoreZoneImageController *zoneController = [[FSMoreZoneImageController alloc] init];
     self = [super initWithRootViewController:zoneController];
     _picker = [[FSImagePicker alloc] init];

@@ -32,25 +32,15 @@
 @implementation FSAllImageController
 
 #if DEBUG
-- (void)dealloc
-{
-//    [[NSNotificationCenter defaultCenter] removeObserver:self];
+- (void)dealloc {
     NSLog(@"%s",__FUNCTION__);
 }
 #endif
 
-//- (void)notificationAction
-//{
-//    [self queryAction];
-//}
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     self.imageNavigationController = (FSImagePickerController *)self.navigationController;
-    
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationAction) name:@"FSPreviewPhotoController" object:nil];;
-    
+        
     self.view.backgroundColor = [UIColor whiteColor];
     if (!self.title) {
         self.title = @"所有照片";
@@ -67,8 +57,7 @@
     [self moreImageHandleDatas];
 }
 
-- (void)moreImageHandleDatas
-{
+- (void)moreImageHandleDatas {
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         FSImagePicker *instance = self.imageNavigationController.picker;
         if (!self.dataSource) {
@@ -83,8 +72,7 @@
     });
 }
 
-- (void)moreImageDesignViews
-{
+- (void)moreImageDesignViews {
     CGFloat width = ([UIScreen mainScreen].bounds.size.width - 25) / 4;
     CGFloat contentHeight = (self.dataSource.count / 4 + 1) * (width + 5);
     
@@ -151,8 +139,7 @@
     };
 }
 
-- (void)queryAction
-{
+- (void)queryAction {
     FSImagePicker *manager = self.imageNavigationController.picker;
     if (self.imageNavigationController.hasSelectImages) {// NSArray<UIImage *> *photos, NSArray *assets,
         self.imageNavigationController.hasSelectImages([manager selectedImagesWithModels],[manager selectedAssetsWithModels]);
@@ -160,8 +147,7 @@
     }
 }
 
-- (void)changeIsOriginal:(BOOL)isOriginal
-{
+- (void)changeIsOriginal:(BOOL)isOriginal {
     FSImagePicker *picker = self.imageNavigationController.picker;
     if (!picker.selectedImages.count) {
         _buttonLabel.isOriginal = NO;
@@ -179,14 +165,12 @@
     }
 }
 
-- (void)btnClick
-{
+- (void)btnClick {
     NSArray *selectedImages = self.imageNavigationController.picker.selectedImages;
     [self pushToBigPictureControllerWithImageArray:selectedImages index:0];
 }
 
-- (void)handleSelectedDatas:(FSBeyondButton *)bButton data:(FSIPModel *)bModel index:(NSInteger)bIndex
-{
+- (void)handleSelectedDatas:(FSBeyondButton *)bButton data:(FSIPModel *)bModel index:(NSInteger)bIndex {
     FSImagePicker *picker = self.imageNavigationController.picker;
     if (bButton.isSelected) {
         NSArray *selectedImages = picker.selectedImages;
@@ -232,18 +216,15 @@
     [self changeIsOriginal:_buttonLabel.isOriginal];
 }
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.dataSource.count;
 }
 
-- (FSMoreImageCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
+- (FSMoreImageCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellID = @"FSMoreImageCell";
     FSMoreImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
     cell.model = self.dataSource[indexPath.row];
@@ -255,13 +236,11 @@
     return cell;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [self pushToBigPictureControllerWithImageArray:self.imageNavigationController.picker.allModels index:indexPath.row];
 }
 
-- (void)pushToBigPictureControllerWithImageArray:(NSArray *)array index:(NSInteger)index
-{
+- (void)pushToBigPictureControllerWithImageArray:(NSArray *)array index:(NSInteger)index {
     FSPreviewPhotoController *bigController = [[FSPreviewPhotoController alloc] init];
     bigController.models = array;
     bigController.index = index;
@@ -280,13 +259,11 @@
     };
 }
 
-- (void)bbiLeftAction
-{
+- (void)bbiLeftAction {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)bbiRightAction
-{
+- (void)bbiRightAction {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -295,8 +272,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setDataSource:(NSArray *)dataSource
-{
+- (void)setDataSource:(NSArray *)dataSource {
     if (_dataSource != dataSource) {
         _dataSource = dataSource;
         

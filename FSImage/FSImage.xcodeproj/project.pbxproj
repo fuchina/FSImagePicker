@@ -151,7 +151,7 @@
 				TargetAttributes = {
 					5CF7929C1DAA56D400078EA5 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = BL86JR5S2K;
+						DevelopmentTeam = U9Y4DBL6N3;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -161,6 +161,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -340,11 +341,11 @@
 			baseConfigurationReference = E46497828C7E0979BAF71DA8 /* Pods-FSImage.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = BL86JR5S2K;
+				DEVELOPMENT_TEAM = U9Y4DBL6N3;
 				INFOPLIST_FILE = FSImage/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = guazi.FSImage;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fuhope.welove;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -354,11 +355,11 @@
 			baseConfigurationReference = CDC0E45AD6C26A3E5C55FDE3 /* Pods-FSImage.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = BL86JR5S2K;
+				DEVELOPMENT_TEAM = U9Y4DBL6N3;
 				INFOPLIST_FILE = FSImage/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = guazi.FSImage;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fuhope.welove;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

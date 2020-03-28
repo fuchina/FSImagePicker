@@ -36,33 +36,28 @@
 @implementation FSPreviewPhotoController
 
 #if DEBUG
-- (void)dealloc
-{
+- (void)dealloc {
     NSLog(@"%s",__FUNCTION__);
 }
 #endif
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     self.navigationController.navigationBar.hidden = YES;
     [super viewWillAppear:animated];
 }
 
-- (BOOL)prefersStatusBarHidden
-{
+- (BOOL)prefersStatusBarHidden {
     return YES;
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated {
     self.navigationController.navigationBar.hidden = NO;
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [super viewWillDisappear:animated];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.imageNavigationController = (FSImagePickerController *)self.navigationController;
@@ -73,8 +68,7 @@
     [self refreshUI];
 }
 
-- (void)designBBIs
-{
+- (void)designBBIs {
     _naviBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 64)];
     _naviBar.backgroundColor = [UIColor colorWithRed:34 / 255.0 green:34 / 255.0 blue:34 / 255.0 alpha:.7];
     [self.view addSubview:_naviBar];
@@ -100,8 +94,7 @@
     [_naviBar addSubview:_beyondButton];
 }
 
-- (void)designBottomView
-{
+- (void)designBottomView {
     _bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - 50, self.view.bounds.size.width, 50)];
     [self.view addSubview:_bottomView];
     UIView *colorView = [[UIView alloc] initWithFrame:_bottomView.bounds];
@@ -154,8 +147,7 @@
     };
 }
 
-- (void)seeImageDesignViews
-{
+- (void)seeImageDesignViews {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     layout.itemSize = CGSizeMake(self.view.bounds.size.width + 20, self.view.bounds.size.height);
@@ -181,24 +173,18 @@
     }
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.models.count;
 }
 
-- (FSIPImageCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
+- (FSIPImageCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellID = @"FSIPImageCell";
     FSIPImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];    
     FSIPModel *model = self.models[indexPath.row];
-    if (model.isMoreClear) {
-        cell.image = model.image;
-    }else{
-        __weak FSIPImageCell *weakCell = cell;
-        [self.imageNavigationController.picker clearnessImageForModel:model completion:^(UIImage *bImage) {
-            weakCell.image = bImage;
-        }];
-    }
+    __weak FSIPImageCell *weakCell = cell;
+    [FSImagePicker clearnessImageForModel:model completion:^(UIImage *bImage) {
+        weakCell.image = bImage;
+    }];
     
     __weak FSPreviewPhotoController *this = self;
     cell.singleTapBlock = ^ (){

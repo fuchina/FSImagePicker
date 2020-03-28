@@ -23,14 +23,12 @@
 @implementation FSMoreZoneImageController
 
 #if DEBUG
-- (void)dealloc
-{
+- (void)dealloc {
     NSLog(@"%s",__FUNCTION__);
 }
 #endif
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"照片";

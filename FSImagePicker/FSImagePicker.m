@@ -14,14 +14,12 @@
 @implementation FSImagePicker
 
 #if DEBUG
-- (void)dealloc
-{
+- (void)dealloc {
     NSLog(@"%s",__FUNCTION__);
 }
 #endif
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         [self requestAllResources];
@@ -29,14 +27,12 @@
     return self;
 }
 
-- (void)requestAllResources
-{
+- (void)requestAllResources {
     _allThumbnails = [self getThumbnailImages];
     _allModels = [self parseArrayFromDictionary:_allThumbnails];
 }
 
-- (NSArray *)parseArrayFromDictionary:(NSDictionary *)dic
-{
+- (NSArray *)parseArrayFromDictionary:(NSDictionary *)dic {
     NSArray *keys = [dic allKeys];
     NSMutableArray *dataSource = [[NSMutableArray alloc] init];
     for (int x = 0; x < keys.count; x ++) {
@@ -46,8 +42,7 @@
     return dataSource;
 }
 
-- (NSInteger)sizeOfSelectedImages
-{
+- (NSInteger)sizeOfSelectedImages {
     __block CGFloat imageLength = 0;
     for (int x = 0; x < _selectedImages.count; x ++) {
         FSIPModel *model = [_selectedImages objectAtIndex:x];
@@ -61,8 +56,7 @@
 }
 
 // 稍微清晰的图片，但不是原图
-- (void)clearnessImageForModel:(FSIPModel *)model completion:(void(^)(UIImage *bImage))completion
-{
++ (void)clearnessImageForModel:(FSIPModel *)model completion:(void(^)(UIImage *bImage))completion {
     PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
     options.resizeMode = PHImageRequestOptionsResizeModeFast;
     
@@ -77,17 +71,17 @@
     
     // 从asset中获得图片
     __block __weak FSIPModel *value = model;
-    __weak FSImagePicker *this = self;
+//    __weak FSImagePicker *this = self;
     [[PHImageManager defaultManager] requestImageForAsset:model.asset targetSize:size contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
         BOOL downloadFinined = ![[info objectForKey:PHImageCancelledKey] boolValue] && ![info objectForKey:PHImageErrorKey] && ![[info objectForKey:PHImageResultIsDegradedKey] boolValue];
         if (downloadFinined) {
-            value.image = result;
+//            value.image = result;
 #if DEBUG
             NSLog(@"%@",result);
 #endif
             value.info = info;
-            value.isMoreClear = YES;
-            value.length = [this sizeForImageWithAsset:model.asset];
+//            value.isMoreClear = YES;
+//            value.length = [this sizeForImageWithAsset:model.asset];
             if (completion) {
                 completion(result);
             }
@@ -99,8 +93,38 @@
     }];
 }
 
-- (NSInteger)sizeForImageWithAsset:(PHAsset *)asset
-{
++ (void)thumbnailImageForModel:(FSIPModel *)model completion:(void(^)(UIImage *bImage))completion {
+    PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
+    options.resizeMode = PHImageRequestOptionsResizeModeFast;
+    
+    CGFloat sizeWidth = UIScreen.mainScreen.bounds.size.width / 4;
+    CGFloat sizeHeight = sizeWidth;
+    CGSize size = CGSizeMake(sizeWidth, sizeHeight);
+    
+    // 从asset中获得图片
+    __block __weak FSIPModel *value = model;
+    [[PHImageManager defaultManager] requestImageForAsset:model.asset targetSize:size contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+        BOOL downloadFinined = ![[info objectForKey:PHImageCancelledKey] boolValue] && ![info objectForKey:PHImageErrorKey] && ![[info objectForKey:PHImageResultIsDegradedKey] boolValue];
+        if (downloadFinined) {
+            value.image = result;
+#if DEBUG
+            NSLog(@"thumbnailImageForModel %@",result);
+#endif
+            value.info = info;
+//            value.isMoreClear = YES;
+//            value.length = [this sizeForImageWithAsset:model.asset];
+            if (completion) {
+                completion(result);
+            }
+        }else{
+            if (completion) {
+                completion(result);
+            }
+        }
+    }];
+}
+
+- (NSInteger)sizeForImageWithAsset:(PHAsset *)asset {
     PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
     options.synchronous = YES;
     __block NSInteger length = 0;
@@ -117,8 +141,7 @@
     return length;
 }
 
-- (NSArray *)selectedAssetsWithModels
-{
+- (NSArray *)selectedAssetsWithModels {
     NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:_selectedImages.count];
     for (int x = 0; x < _selectedImages.count; x ++) {
         FSIPModel *model = [_selectedImages objectAtIndex:x];
@@ -129,8 +152,7 @@
     return array;
 }
 
-- (NSArray *)selectedImagesWithModels
-{
+- (NSArray *)selectedImagesWithModels {
     NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:_selectedImages.count];
     for (int x = 0; x < _selectedImages.count; x ++) {
         FSIPModel *model = [_selectedImages objectAtIndex:x];
@@ -152,8 +174,7 @@
     return array;
 }
 
-- (NSData *)imageForModel:(FSIPModel *)model
-{
+- (NSData *)imageForModel:(FSIPModel *)model {
     if (!model.asset) {
         return nil;
     }
@@ -167,15 +188,14 @@
 }
 
 // 获取所有图片的Model
-- (NSDictionary *)getThumbnailImages
-{
+- (NSDictionary *)getThumbnailImages {
     // 获得所有的自定义相簿
     PHFetchResult<PHAssetCollection *> *assetCollections = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
     // 遍历所有的自定义相簿
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     for (PHAssetCollection *assetCollection in assetCollections) {
         NSString *name = assetCollection.localizedTitle;
-        NSArray *array = [self enumerateAssetsInAssetCollection:assetCollection original:NO];
+        NSArray *array = [self enumerateAssetsInAssetCollection:assetCollection];
         if (name.length == 0) {
             name = @"自定义相册";
         }
@@ -192,7 +212,7 @@
     }
     // 获得相机胶卷
     PHAssetCollection *cameraRoll = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary options:nil].lastObject;
-    NSArray *array = [self enumerateAssetsInAssetCollection:cameraRoll original:NO];
+    NSArray *array = [self enumerateAssetsInAssetCollection:cameraRoll];
     NSString *name = cameraRoll.localizedTitle;
     if (name.length == 0) {
         name = @"相机胶卷";
@@ -213,11 +233,8 @@
 /**
  *  遍历相簿中的所有图片
  *  @param assetCollection 相簿
- *  @param original        是否要原图
  */
-- (NSArray *)enumerateAssetsInAssetCollection:(PHAssetCollection *)assetCollection original:(BOOL)original
-{
-    //    NSLog(@"相簿名:%@", assetCollection.localizedTitle);
+- (NSArray *)enumerateAssetsInAssetCollection:(PHAssetCollection *)assetCollection {
     PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
     // 同步获得图片, 只会返回1张图片
     options.synchronous = YES;
@@ -237,8 +254,8 @@
             continue;
         }
         
-        FSIPModel *model = [[FSIPModel alloc] init];
-        model.image = nil;
+        FSIPModel *model = [FSIPModel alloc];
+//        model.image = nil;
         model.info = nil;
         model.asset = asset;
         [array addObject:model];
@@ -246,8 +263,7 @@
     return array;
 }
 
-void getImgWidth(long *width , int * index)
-{
+void getImgWidth(long *width , int * index) {
     if (*width < 160) {
         return ;
     }
@@ -256,8 +272,7 @@ void getImgWidth(long *width , int * index)
     getImgWidth(width,index);
 }
 
-- (NSInteger)compressWidthForImageWidth:(NSInteger)imageWidth
-{
+- (NSInteger)compressWidthForImageWidth:(NSInteger)imageWidth {
     int  index = 0;
     getImgWidth(&imageWidth, &index);
     return index;

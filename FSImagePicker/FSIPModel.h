@@ -10,12 +10,12 @@
 #import <UIKit/UIKit.h>
 #import <Photos/Photos.h>
 
-@interface FSIPModel : NSObject
+@interface FSIPModel : NSProxy
 
 @property (nonatomic,strong) PHAsset        *asset;
 @property (nonatomic,strong) UIImage        *image;
 @property (nonatomic,strong) NSDictionary   *info;
-@property (nonatomic,assign) BOOL           isMoreClear;
+//@property (nonatomic,assign) BOOL           isMoreClear;
 @property (nonatomic,assign) NSInteger      length;
 
 @end

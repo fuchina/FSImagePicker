@@ -7,22 +7,24 @@
 //
 
 #import "FSMoreZoneImageCell.h"
+#import "FSImagePicker.h"
 
 @implementation FSMoreZoneImageCell
 
-- (void)setModel:(FSIPModel *)model
-{
+- (void)setModel:(FSIPModel *)model {
     if (_model != model) {
-        self.imageView.image = model.image;
+        _model = model;
+        [FSImagePicker thumbnailImageForModel:model completion:^(UIImage *bImage) {
+            self.imageView.image = bImage;
+        }];
     }
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
     
     self.imageView.frame = CGRectMake(0, 0, 70, 70);
-    self.imageView.contentMode = UIViewContentModeScaleToFill;
+//    self.imageView.contentMode = UIViewContentModeScaleAspectFill;
     
     CGRect tmpFrame = self.textLabel.frame;
     tmpFrame.origin.x = 80;
