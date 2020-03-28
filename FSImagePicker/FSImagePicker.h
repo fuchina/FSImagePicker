@@ -35,7 +35,7 @@
 + (void)thumbnailImageForModel:(FSIPModel *)model completion:(void(^)(UIImage *bImage))completion;
 
 // 图片大小
-- (NSInteger)sizeForImageWithAsset:(PHAsset *)asset;
++ (void)imageDataWithAsset:(PHAsset *)asset completion:(void(^)(NSData *data))completion;
 
 - (NSArray *)selectedAssetsWithModels;
 

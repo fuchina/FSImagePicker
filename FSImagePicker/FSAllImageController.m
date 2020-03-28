@@ -156,8 +156,8 @@
         return;
     }
     picker.isOriginal = isOriginal;
-    if (picker.isOriginal) {
-        CGFloat bSize = [picker sizeOfSelectedImages];
+    CGFloat bSize = [picker sizeOfSelectedImages];
+    if (picker.isOriginal && bSize > 0.001) {
         NSString *sizeString = [[NSString alloc] initWithFormat:@"原图 (%@)",[FSIPTool KMGUnit:bSize]];
         _buttonLabel.label.text = sizeString;
     }else{

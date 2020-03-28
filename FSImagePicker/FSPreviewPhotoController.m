@@ -22,7 +22,7 @@
 
 @property (nonatomic,strong) FSBeyondButton                     *beyondButton;
 @property (nonatomic,strong) FSCountButton                      *countButton;
-@property (nonatomic,strong) FSButtonLabel                      *buttonLabel;
+//@property (nonatomic,strong) FSButtonLabel                      *buttonLabel;
 @property (nonatomic,strong) UIView                             *naviBar;
 @property (nonatomic,strong) UIView                             *bottomView;
 @property (nonatomic,assign) BOOL                               isFullScreen;
@@ -101,40 +101,40 @@
     colorView.backgroundColor = [UIColor colorWithRed:34 / 255.0 green:34 / 255.0 blue:34 / 255.0 alpha:.7];
     [_bottomView addSubview:colorView];
     
-    FSImagePicker *picker = self.imageNavigationController.picker;
+//    FSImagePicker *picker = self.imageNavigationController.picker;
     __weak FSPreviewPhotoController *this = self;
-    _buttonLabel = [[FSButtonLabel alloc] initWithFrame:CGRectMake(10, 0, 150, 50)];
-    [_bottomView addSubview:_buttonLabel];
+//    _buttonLabel = [[FSButtonLabel alloc] initWithFrame:CGRectMake(10, 0, 150, 50)];
+//    [_bottomView addSubview:_buttonLabel];
     
-    if (picker.isOriginal && (self.models.count > _index)) {
-        FSIPModel *model = self.models[_index];
-        if (model.length) {
-            _buttonLabel.label.text = [[NSString alloc] initWithFormat:@"原图 (%@)",[FSIPTool KMGUnit:model.length]];
-        }
-    }else{
-        _buttonLabel.label.text = @"原图";
-    }
+//    if (picker.isOriginal && (self.models.count > _index)) {
+//        FSIPModel *model = self.models[_index];
+//        if (model.length) {
+//            _buttonLabel.label.text = [[NSString alloc] initWithFormat:@"原图 (%@)",[FSIPTool KMGUnit:model.length]];
+//        }
+//    }else{
+//        _buttonLabel.label.text = @"原图";
+//    }
 
-    _buttonLabel.isOriginal = picker.isOriginal;
-    _buttonLabel.label.textColor = [UIColor lightGrayColor];
-    _buttonLabel.tapBlock = ^ (FSButtonLabel *bButton){
-        if (this.tapBlock) {
-            this.tapBlock(bButton.isOriginal);
-        }
-        bButton.label.textColor = [UIColor lightGrayColor];
-        
-        if (bButton.isOriginal) {
-            FSIPModel *nowModel = [this.models objectAtIndex:this.index];
-            if (nowModel.length) {
-                NSString *sizeString = [[NSString alloc] initWithFormat:@"原图 (%@)",[FSIPTool KMGUnit:nowModel.length]];
-                bButton.label.text = sizeString;
-            }
-            this.beyondButton.isSelected = YES;
-            [this handleSelectedModelsWithFlag:this.beyondButton];
-        }else{
-            bButton.label.text = @"原图";
-        }
-    };
+//    _buttonLabel.isOriginal = picker.isOriginal;
+//    _buttonLabel.label.textColor = [UIColor lightGrayColor];
+//    _buttonLabel.tapBlock = ^ (FSButtonLabel *bButton){
+//        if (this.tapBlock) {
+//            this.tapBlock(bButton.isOriginal);
+//        }
+//        bButton.label.textColor = [UIColor lightGrayColor];
+//
+//        if (bButton.isOriginal) {
+//            FSIPModel *nowModel = [this.models objectAtIndex:this.index];
+//            if (nowModel.length) {
+//                NSString *sizeString = [[NSString alloc] initWithFormat:@"原图 (%@)",[FSIPTool KMGUnit:nowModel.length]];
+//                bButton.label.text = sizeString;
+//            }
+//            this.beyondButton.isSelected = YES;
+//            [this handleSelectedModelsWithFlag:this.beyondButton];
+//        }else{
+//            bButton.label.text = @"原图";
+//        }
+//    };
     
     _countButton = [[FSCountButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - 80, 0, 80, 50)];
     _countButton.textLabel.text = @"确定";
@@ -238,20 +238,17 @@
     }
 }
 
-- (void)refreshUI
-{
+- (void)refreshUI {
     FSImagePicker *picker = self.imageNavigationController.picker;
     _countButton.enabled = picker.selectedImages.count?YES:NO;
     _countButton.countLabel.text = @(picker.selectedImages.count).stringValue;
 }
 
-- (void)btnClick
-{
+- (void)btnClick {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)indexChangeAction:(NSInteger)bIndex
-{
+- (void)indexChangeAction:(NSInteger)bIndex {
     FSImagePicker *picker = self.imageNavigationController.picker;
     NSArray<NSIndexPath *> *indexPaths = [self.collectionView indexPathsForVisibleItems];
     if (indexPaths) {
@@ -259,10 +256,10 @@
             FSIPModel *model = [self.models objectAtIndex:bIndex];
             self.beyondButton.isSelected = [picker.selectedImages containsObject:model];
             
-            if (self.buttonLabel.isOriginal) {
-                NSString *sizeString = [[NSString alloc] initWithFormat:@"原图 (%@)",[FSIPTool KMGUnit:model.length]];
-                self.buttonLabel.label.text = sizeString;
-            }
+//            if (self.buttonLabel.isOriginal && model.length) {
+//                NSString *sizeString = [[NSString alloc] initWithFormat:@"原图 (%@)",[FSIPTool KMGUnit:model.length]];
+//                self.buttonLabel.label.text = sizeString;
+//            }
         }
     }
 }

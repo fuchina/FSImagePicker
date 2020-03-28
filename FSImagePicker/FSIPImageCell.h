@@ -11,7 +11,7 @@
 @interface FSIPImageCell : UICollectionViewCell
 
 @property (nonatomic, strong) UIImage *image;
-@property (nonatomic, copy) void (^singleTapBlock)();
+@property (nonatomic, copy) void (^singleTapBlock)(void);
 
 - (void)recoverSubviews;
 

@@ -48,8 +48,10 @@
         FSIPModel *model = [_selectedImages objectAtIndex:x];
         if (model.length) {
             imageLength += model.length;
-        }else{
-            imageLength += [self sizeForImageWithAsset:model.asset];
+        } else {
+            [FSImagePicker imageDataWithAsset:model.asset completion:^(NSData *data) {
+                model.length = data.length;
+            }];
         }
     }
     return imageLength;
@@ -75,13 +77,14 @@
     [[PHImageManager defaultManager] requestImageForAsset:model.asset targetSize:size contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
         BOOL downloadFinined = ![[info objectForKey:PHImageCancelledKey] boolValue] && ![info objectForKey:PHImageErrorKey] && ![[info objectForKey:PHImageResultIsDegradedKey] boolValue];
         if (downloadFinined) {
-//            value.image = result;
+            value.image = result;
 #if DEBUG
             NSLog(@"%@",result);
 #endif
             value.info = info;
-//            value.isMoreClear = YES;
-//            value.length = [this sizeForImageWithAsset:model.asset];
+            [self imageDataWithAsset:model.asset completion:^(NSData *data) {
+                value.length = data.length;
+            }];
             if (completion) {
                 completion(result);
             }
@@ -124,21 +127,14 @@
     }];
 }
 
-- (NSInteger)sizeForImageWithAsset:(PHAsset *)asset {
++ (void)imageDataWithAsset:(PHAsset *)asset completion:(void(^)(NSData *data))completion {
     PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
-    options.synchronous = YES;
-    __block NSInteger length = 0;
-    __weak FSImagePicker *this = self;
+//    options.synchronous = YES;
     [[PHImageManager defaultManager] requestImageDataForAsset:asset options:options resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
-        length = imageData.length;
-        for (int x = 0; x < this.selectedImages.count; x ++) {
-            FSIPModel *model = this.selectedImages[x];
-            if (model.asset == asset) {
-                model.length = length;
-            }
+        if (completion) {
+            completion(imageData);
         }
     }];
-    return length;
 }
 
 - (NSArray *)selectedAssetsWithModels {
