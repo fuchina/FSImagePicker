@@ -87,7 +87,7 @@
         [this handleSelectedModelsWithFlag:bButton];
     };
     FSImagePicker *picker = self.imageNavigationController.picker;
-    FSIPModel *selectedModel = [_models objectAtIndex:_index];
+    FSAsset *selectedModel = [_models objectAtIndex:_index];
     if ([picker.selectedImages containsObject:selectedModel]) {
         _beyondButton.isSelected = YES;
     }
@@ -180,7 +180,7 @@
 - (FSIPImageCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellID = @"FSIPImageCell";
     FSIPImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];    
-    FSIPModel *model = self.models[indexPath.row];
+    FSAsset *model = self.models[indexPath.row];
     __weak FSIPImageCell *weakCell = cell;
     [FSImagePicker clearnessImageForModel:model completion:^(UIImage *bImage) {
         weakCell.image = bImage;
@@ -231,7 +231,7 @@
 {
     if (self.hasSelected) {
         if (self.models.count > self.index) {
-            FSIPModel *nowModel = [self.models objectAtIndex:self.index];
+            FSAsset *nowModel = [self.models objectAtIndex:self.index];
             self.hasSelected(bButton,nowModel,self.index);
         }
         [self refreshUI];
@@ -253,7 +253,7 @@
     NSArray<NSIndexPath *> *indexPaths = [self.collectionView indexPathsForVisibleItems];
     if (indexPaths) {
         if (self.models.count > bIndex) {
-            FSIPModel *model = [self.models objectAtIndex:bIndex];
+            FSAsset *model = [self.models objectAtIndex:bIndex];
             self.beyondButton.isSelected = [picker.selectedImages containsObject:model];
             
 //            if (self.buttonLabel.isOriginal && model.length) {

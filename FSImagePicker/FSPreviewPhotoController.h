@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FSIPModel.h"
+#import "FSAsset.h"
 
 @class FSButtonLabel;
 @class FSBeyondButton;
@@ -17,7 +17,7 @@
 @property (nonatomic,assign) NSInteger      index;
 
 @property (nonatomic,copy)  void (^tapBlock)(BOOL bIsOriginal);
-@property (nonatomic,copy)  void (^hasSelected)(FSBeyondButton *bButton,FSIPModel *bModel,NSInteger bIndex);
+@property (nonatomic,copy)  void (^hasSelected)(FSBeyondButton *bButton,FSAsset *bModel,NSInteger bIndex);
 @property (nonatomic,copy)  void (^queryActionBlock)(FSPreviewPhotoController *bVC);    // 不传过去pop就会导致内存泄露
 
 @end

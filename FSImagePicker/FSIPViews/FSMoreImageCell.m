@@ -40,7 +40,7 @@
     return self;
 }
 
-- (void)setModel:(FSIPModel *)model {
+- (void)setModel:(FSAsset *)model {
     if (_model != model) {
         _model = model;
         

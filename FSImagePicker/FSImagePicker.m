@@ -45,7 +45,7 @@
 - (NSInteger)sizeOfSelectedImages {
     __block CGFloat imageLength = 0;
     for (int x = 0; x < _selectedImages.count; x ++) {
-        FSIPModel *model = [_selectedImages objectAtIndex:x];
+        FSAsset *model = [_selectedImages objectAtIndex:x];
         if (model.length) {
             imageLength += model.length;
         } else {
@@ -58,7 +58,7 @@
 }
 
 // 稍微清晰的图片，但不是原图
-+ (void)clearnessImageForModel:(FSIPModel *)model completion:(void(^)(UIImage *bImage))completion {
++ (void)clearnessImageForModel:(FSAsset *)model completion:(void(^)(UIImage *bImage))completion {
     PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
     options.resizeMode = PHImageRequestOptionsResizeModeFast;
     
@@ -72,7 +72,7 @@
     CGSize size = CGSizeMake(sizeWidth, sizeHeight);
     
     // 从asset中获得图片
-    __block __weak FSIPModel *value = model;
+    __block __weak FSAsset *value = model;
 //    __weak FSImagePicker *this = self;
     [[PHImageManager defaultManager] requestImageForAsset:model.asset targetSize:size contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
         BOOL downloadFinined = ![[info objectForKey:PHImageCancelledKey] boolValue] && ![info objectForKey:PHImageErrorKey] && ![[info objectForKey:PHImageResultIsDegradedKey] boolValue];
@@ -96,7 +96,7 @@
     }];
 }
 
-+ (void)thumbnailImageForModel:(FSIPModel *)model completion:(void(^)(UIImage *bImage))completion {
++ (void)thumbnailImageForModel:(FSAsset *)model completion:(void(^)(UIImage *bImage))completion {
     PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
     options.resizeMode = PHImageRequestOptionsResizeModeFast;
     
@@ -105,7 +105,7 @@
     CGSize size = CGSizeMake(sizeWidth, sizeHeight);
     
     // 从asset中获得图片
-    __block __weak FSIPModel *value = model;
+    __block __weak FSAsset *value = model;
     [[PHImageManager defaultManager] requestImageForAsset:model.asset targetSize:size contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
         BOOL downloadFinined = ![[info objectForKey:PHImageCancelledKey] boolValue] && ![info objectForKey:PHImageErrorKey] && ![[info objectForKey:PHImageResultIsDegradedKey] boolValue];
         if (downloadFinined) {
@@ -140,7 +140,7 @@
 - (NSArray *)selectedAssetsWithModels {
     NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:_selectedImages.count];
     for (int x = 0; x < _selectedImages.count; x ++) {
-        FSIPModel *model = [_selectedImages objectAtIndex:x];
+        FSAsset *model = [_selectedImages objectAtIndex:x];
         if (model.asset) {
             [array addObject:model.asset];
         }
@@ -151,7 +151,7 @@
 - (NSArray *)selectedImagesWithModels {
     NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:_selectedImages.count];
     for (int x = 0; x < _selectedImages.count; x ++) {
-        FSIPModel *model = [_selectedImages objectAtIndex:x];
+        FSAsset *model = [_selectedImages objectAtIndex:x];
         if (model.asset) {
             NSData *imageData = [self imageForModel:model];
             if (!_isOriginal) {
@@ -170,7 +170,7 @@
     return array;
 }
 
-- (NSData *)imageForModel:(FSIPModel *)model {
+- (NSData *)imageForModel:(FSAsset *)model {
     if (!model.asset) {
         return nil;
     }
@@ -250,7 +250,7 @@
             continue;
         }
         
-        FSIPModel *model = [FSIPModel alloc];
+        FSAsset *model = [FSAsset alloc];
 //        model.image = nil;
         model.info = nil;
         model.asset = asset;

@@ -170,7 +170,7 @@
     [self pushToBigPictureControllerWithImageArray:selectedImages index:0];
 }
 
-- (void)handleSelectedDatas:(FSBeyondButton *)bButton data:(FSIPModel *)bModel index:(NSInteger)bIndex {
+- (void)handleSelectedDatas:(FSBeyondButton *)bButton data:(FSAsset *)bModel index:(NSInteger)bIndex {
     FSImagePicker *picker = self.imageNavigationController.picker;
     if (bButton.isSelected) {
         NSArray *selectedImages = picker.selectedImages;
@@ -230,7 +230,7 @@
     cell.model = self.dataSource[indexPath.row];
     cell.isSelected = [self.imageNavigationController.picker.selectedImages containsObject:cell.model];
     __weak FSAllImageController *this = self;
-    cell.btnClickBlock = ^ (FSBeyondButton *bButton,FSIPModel *bModel){
+    cell.btnClickBlock = ^ (FSBeyondButton *bButton,FSAsset *bModel){
         [this handleSelectedDatas:bButton data:bModel index: -1];
     };
     return cell;
@@ -250,7 +250,7 @@
         this.buttonLabel.isOriginal = bIsOriginal;
         [this changeIsOriginal:bIsOriginal];
     };
-    bigController.hasSelected = ^ (FSBeyondButton *bButton,FSIPModel *bModel,NSInteger bIndex){
+    bigController.hasSelected = ^ (FSBeyondButton *bButton,FSAsset *bModel,NSInteger bIndex){
         [this handleSelectedDatas:bButton data:bModel index:bIndex];
     };
     bigController.queryActionBlock = ^(FSPreviewPhotoController *bVC){

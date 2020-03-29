@@ -1,16 +1,16 @@
 //
-//  FSIPModel.h
-//  FSImage
+//  FSAsset.h
+//  FSImagePicker
 //
-//  Created by fudon on 2016/11/29.
-//  Copyright © 2016年 guazi. All rights reserved.
+//  Created by FudonFuchina on 2020/3/29.
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 #import <Photos/Photos.h>
 
-@interface FSIPModel : NSProxy
+NS_ASSUME_NONNULL_BEGIN
+
+@interface FSAsset : NSProxy
 
 @property (nonatomic,strong) PHAsset        *asset;
 @property (nonatomic,strong) UIImage        *image;
@@ -19,3 +19,5 @@
 @property (nonatomic,assign) NSInteger      length;
 
 @end
+
+NS_ASSUME_NONNULL_END

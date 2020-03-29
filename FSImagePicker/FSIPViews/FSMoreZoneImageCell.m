@@ -11,7 +11,7 @@
 
 @implementation FSMoreZoneImageCell
 
-- (void)setModel:(FSIPModel *)model {
+- (void)setModel:(FSAsset *)model {
     if (_model != model) {
         _model = model;
         [FSImagePicker thumbnailImageForModel:model completion:^(UIImage *bImage) {
